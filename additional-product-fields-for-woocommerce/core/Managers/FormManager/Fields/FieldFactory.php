@@ -36,6 +36,7 @@ class FieldFactory{
             case 'searchabledropdown':
             case 'likertscale':
             case 'fontpicker':
+            case 'popupselectorfield':
                 return new FBMultipleOptionsField($loader,$column,$fieldOptions,$entry);
             case 'paragraph':
             case 'divider':

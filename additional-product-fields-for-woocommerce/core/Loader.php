@@ -21,6 +21,7 @@ use rednaowooextraproduct\ajax\OrderDesignerAjax;
 use rednaowooextraproduct\ajax\ProductDesignerAjax;
 use rednaowooextraproduct\core\Managers\FormManager\Fields\FBTextField;
 use rednaowooextraproduct\core\Managers\WooStagesManager;
+use rednaowooextraproduct\core\Utils\ArrayUtils;
 use rednaowooextraproduct\Integration\PluginsIntegration\PluginIntegrationManager;
 use rednaowooextraproduct\Integration\Translations\TranslatorFactory;
 use rednaowooextraproduct\Integration\Widgets\ElementorWidget;
@@ -45,7 +46,7 @@ class Loader extends PluginBase
 
     public function __construct($filePath,$prefix,$rootPath,$config)
     {
-        parent::__construct($filePath,$prefix,109,83,$rootPath,$config);
+        parent::__construct($filePath,$prefix,109,86,$rootPath,$config);
         global $wpdb;
         $this->GlobalTable=$wpdb->prefix.$prefix.'_global_table';
         $this->TranslationTable=$wpdb->prefix.$prefix.'_translations';
@@ -389,7 +390,7 @@ class Loader extends PluginBase
         }
 
         $fieldsWithTranslation=['FBRepeater'];
-        $fieldsWidthStyle=['FBAppointment','FBGroupButton','FBColorPickerField','FBSizeChart','FBDropDown','FBDatePicker','FBPopup','FBTextWithStyles','FBCollapsible','FBDateRange','FBFile','FBGroupPanel','FBImagePicker','FBList','FBRepeater','FBSlider','FBRange','FBButtonSelection','FBSignature','FBColorSwatcher','FBTermOfService','FBSearchableSelect','FBLikertScale','FBSurvey','FBFontPicker'];
+        $fieldsWidthStyle=['FBAppointment','FBPopUpSelector','FBGroupButton','FBColorPickerField','FBSizeChart','FBDropDown','FBDatePicker','FBPopup','FBTextWithStyles','FBCollapsible','FBDateRange','FBFile','FBGroupPanel','FBImagePicker','FBList','FBRepeater','FBSlider','FBRange','FBButtonSelection','FBSignature','FBColorSwatcher','FBTermOfService','FBSearchableSelect','FBLikertScale','FBSurvey','FBFontPicker'];
         if(isset($options->DynamicFieldTypes))
         {
             if(isset($options->Version))
@@ -462,6 +463,38 @@ class Loader extends PluginBase
             do_action('woo-extra-product-load-fonts', $options);
         }
 
+
+        if(isset($options->AdditionalDependencies))
+        {
+            foreach($options->AdditionalDependencies as $dependency)
+            {
+                if($dependency=='HasRoleFunction')
+                {
+                    $user = get_userdata(get_current_user_id());
+                    $roles=[];
+
+                    if ($user)
+                    {
+                        global $wp_roles;
+                        foreach ($user->roles as $role)
+                        {
+                            $roleLabel = '';
+                            if (isset($wp_roles->roles[$role]))
+                            {
+                                $roleLabel = $wp_roles->roles[$role]['name'];
+                            }
+
+                            $roles[$role] = $roleLabel;
+
+
+                        }
+                    }
+
+                    $this->LocalizeScript('rnPBUserData','form-builder','',['Roles'=>$roles]);
+
+                }
+            }
+        }
 
 
         $this->LocalizeScript('ProductBuilderOptions_'.$id,'form-builder','ProductBuilder',\apply_filters('woo-extra-product-load-vars',array(

@@ -47,7 +47,7 @@ class ProductBuilderPanel
 
         $dependencies=apply_filters('woo-extra-product-fields-loaded',$dependencies);
 
-        $fieldsWidthStyle=['FBAppointment','FBGroupButton','FBDatePicker','FBSizeChart','FBPopup','FBCollapsible','FBDateRange','FBDropDown','FBTextWithStyles','FBFile','FBGroupPanel','FBImagePicker','FBList','FBRepeater','FBSlider','FBRange','FBButtonSelection','FBSignature','FBColorSwatcher','FBTermOfService','FBSearchableSelect','FBLikertScale','FBSurvey','FBFontPicker'];
+        $fieldsWidthStyle=['FBAppointment','FBPopUpSelector','FBGroupButton','FBDatePicker','FBSizeChart','FBPopup','FBCollapsible','FBDateRange','FBDropDown','FBTextWithStyles','FBFile','FBGroupPanel','FBImagePicker','FBList','FBRepeater','FBSlider','FBRange','FBButtonSelection','FBSignature','FBColorSwatcher','FBTermOfService','FBSearchableSelect','FBLikertScale','FBSurvey','FBFontPicker'];
         foreach($fieldsWidthStyle as $currentDynamicField )
         {
             $this->loader->AddStyle($currentDynamicField, 'js/dist/' . $currentDynamicField . '_bundle.css');
