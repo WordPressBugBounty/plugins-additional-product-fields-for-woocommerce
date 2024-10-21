@@ -42,3 +42,11 @@
     opacity: .7;
     pointer-events: none;
 }
+
+.buttonSelectionItemContainer.auto{
+    justify-content: flex-start;
+}
+
+.buttonSelectionItemContainer.auto .ButtonSelectorItem  {
+    margin-right: 10px;
+}

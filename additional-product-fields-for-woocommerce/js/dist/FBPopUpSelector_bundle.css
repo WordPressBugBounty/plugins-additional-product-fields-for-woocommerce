@@ -130,3 +130,8 @@
 .quantitySection label{
     font-weight: bold;
 }
+
+.popUpItem label{
+    font-weight: bold;
+    word-wrap: break-word;
+}

@@ -11,6 +11,5 @@
 "Option disabled successfully"=>__("Option disabled successfully","rednaowooextraproduct"),
 "Enabling"=>__("Enabling","rednaowooextraproduct"),
 "Option enabled successfully"=>__("Option enabled successfully","rednaowooextraproduct"),
-"Please confirm"=>__("Please confirm","rednaowooextraproduct"),
 "Please select an action first"=>__("Please select an action first","rednaowooextraproduct")
 );

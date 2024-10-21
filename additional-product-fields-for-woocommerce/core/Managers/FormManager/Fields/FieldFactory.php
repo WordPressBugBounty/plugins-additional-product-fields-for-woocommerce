@@ -41,6 +41,7 @@ class FieldFactory{
             case 'paragraph':
             case 'divider':
             case 'linkbutton':
+            case 'html':
                 return new FBNoneField($loader,$column,$fieldOptions,$entry);
             case 'termofservice':
                 return new FBTermOfService($loader,$column,$fieldOptions,$entry);
