@@ -74,6 +74,7 @@ class ProductBuilderPanel
 
 
             $this->loader->AddScript('MaximumNumberOfItems','js/dist/MaximumNumberOfItemsConditionProcessor_bundle.js', array('@products-builder'));
+            $this->loader->AddScript('MinimumNumberOfItems','js/dist/MinimumNumberOfItemsConditionProcessor_bundle.js', array('@products-builder'));
 
             $dependencies[]='@multiplesteps';
             $dependencies[]='@multiplestepsdesigner';

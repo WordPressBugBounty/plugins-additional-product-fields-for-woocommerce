@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=edsev
 Tags: woocommerce fields, woocommerce, extra product options, woocommerce form, woocommerce options
 Requires at least: 3.3
 Tested up to: 6.6
-Stable tag: 1.2.134
+Stable tag: 1.2.136
 License: GPLv3 or later
 Author URI: https://rednao.com/
 Plugin URI: https://rednao.com/
@@ -102,6 +102,8 @@ Introduction to the front end api
 For developers. Learn how to use the api to fill a text box or check a box programmatically.
 
 == Changelog ==
+= Extra Product Options Builder for WooCommerce 1.2.135 =
+* Added minimum number of items setting to multiple option fields
 = Extra Product Options Builder for WooCommerce 1.2.134 =
 * Added html field
 * Added style to change the icon size of the button selection

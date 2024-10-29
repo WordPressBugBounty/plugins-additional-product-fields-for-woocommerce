@@ -5,7 +5,7 @@
  * Description: Create extra options to each of your products
  * Author: RedNao
  * Author URI: http://rednao.com
- * Version: 1.2.134
+ * Version: 1.2.136
  * Text Domain: rednaowooextraproduct
  * Domain Path: /languages/
  * License: GPLv3
