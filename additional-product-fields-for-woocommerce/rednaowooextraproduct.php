@@ -5,9 +5,10 @@
  * Description: Create extra options to each of your products
  * Author: RedNao
  * Author URI: http://rednao.com
- * Version: 1.2.136
+ * Version: 1.2.138
  * Text Domain: rednaowooextraproduct
  * Domain Path: /languages/
+ * Network: true
  * License: GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0
  * Slug: additional-product-fields-for-woocommerce

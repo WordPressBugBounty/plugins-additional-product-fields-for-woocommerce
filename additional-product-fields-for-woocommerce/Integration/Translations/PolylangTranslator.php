@@ -9,11 +9,6 @@
 namespace rednaowooextraproduct\Integration\Translations;
 
 class PolylangTranslator extends TranslationBase {
-
-
-
-
-
     public function GetLanguages()
     {
         $languages=array();
@@ -41,7 +36,7 @@ class PolylangTranslator extends TranslationBase {
 
     public function GetDefaultLanguage()
     {
-        return icl_get_default_language();
+        return pll_default_language();
     }
 
 

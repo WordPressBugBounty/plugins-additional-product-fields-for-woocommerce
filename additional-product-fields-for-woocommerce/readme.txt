@@ -3,8 +3,8 @@ Contributors: EDGARROJAS
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=edseventeen%40gmail.com
 Tags: woocommerce fields, woocommerce, extra product options, woocommerce form, woocommerce options
 Requires at least: 3.3
-Tested up to: 6.6
-Stable tag: 1.2.136
+Tested up to: 6.7.1
+Stable tag: 1.2.138
 License: GPLv3 or later
 Author URI: https://rednao.com/
 Plugin URI: https://rednao.com/
@@ -102,6 +102,8 @@ Introduction to the front end api
 For developers. Learn how to use the api to fill a text box or check a box programmatically.
 
 == Changelog ==
+= Extra Product Options Builder for WooCommerce 1.2.137 =
+* Showing a link for not image files uploaded using a file upload
 = Extra Product Options Builder for WooCommerce 1.2.135 =
 * Added minimum number of items setting to multiple option fields
 = Extra Product Options Builder for WooCommerce 1.2.134 =

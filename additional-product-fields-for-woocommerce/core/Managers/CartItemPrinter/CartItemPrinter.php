@@ -114,7 +114,7 @@ class CartItemPrinter
                 $other_data[]=array('name'=>$field->Label,'value'=>$display,'field'=>$field,'key'=>$label,'display'=>$display,'display_key'=>$label);
             else
             if(\is_scalar($value)&&trim($value)!='')
-                $other_data[]=array('name'=>$field->Label,'value'=>$value,'field'=>$field,'key'=>$label,'display'=>$display,'display_key'=>$label);
+                $other_data[]=array('name'=>$field->Label,'value'=>$value,'field'=>$field,'key'=>$label,'display'=>nl2br($display),'display_key'=>$label);
             else
                 $other_data[]=array('name'=>$field->Label,'value'=>$display,'field'=>$field,'key'=>$label,'display'=>$display,'display_key'=>$label);
 
