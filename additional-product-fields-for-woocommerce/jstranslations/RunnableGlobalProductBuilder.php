@@ -15,13 +15,7 @@
 "Global Options"=>__("Global Options","rednaowooextraproduct"),
 "Name is mandatory"=>__("Name is mandatory","rednaowooextraproduct"),
 "Global options saved"=>__("Global options saved","rednaowooextraproduct"),
-"Required"=>__("Required","rednaowooextraproduct"),
 "Create Condition"=>__("Create Condition","rednaowooextraproduct"),
 "or"=>__("or","rednaowooextraproduct"),
-"Add new group"=>__("Add new group","rednaowooextraproduct"),
-"Select a condition type"=>__("Select a condition type","rednaowooextraproduct"),
-"Product Category"=>__("Product Category","rednaowooextraproduct"),
-"Product Tag"=>__("Product Tag","rednaowooextraproduct"),
-"Product Attribute"=>__("Product Attribute","rednaowooextraproduct"),
-"AND"=>__("AND","rednaowooextraproduct")
+"Add new group"=>__("Add new group","rednaowooextraproduct")
 );

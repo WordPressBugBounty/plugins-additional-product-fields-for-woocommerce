@@ -46,7 +46,7 @@ class Loader extends PluginBase
 
     public function __construct($filePath,$prefix,$rootPath,$config)
     {
-        parent::__construct($filePath,$prefix,109,89,$rootPath,$config);
+        parent::__construct($filePath,$prefix,109,90,$rootPath,$config);
         global $wpdb;
         $this->GlobalTable=$wpdb->prefix.$prefix.'_global_table';
         $this->TranslationTable=$wpdb->prefix.$prefix.'_translations';
@@ -381,7 +381,7 @@ class Loader extends PluginBase
         $this->AddRNTranslator($translations);
         $this->AddScript('shared-core','js/dist/SharedCore_bundle.js',array('@RNTranslator','wp-element','regenerator-runtime'));
         $this->AddScript('internal-shared','js/dist/InternalShared_bundle.js',array('@shared-core'));
-        $this->AddScript('form-builder','js/dist/FormBuilder_bundle.js',array('@RNTranslator','@internal-shared'));
+        $this->AddScript('form-builder','js/dist/FormBuilder_bundle.js',array('@RNTranslator','@internal-shared','jquery'));
         $this->AddStyle('form-builder','js/dist/FormBuilder_bundle.css');
         if(isset($options->MultipleSteps)&&$options->MultipleSteps!=null)
         {

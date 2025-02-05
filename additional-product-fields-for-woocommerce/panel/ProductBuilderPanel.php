@@ -30,7 +30,7 @@ class ProductBuilderPanel
         $this->loader->AddRNTranslator(array('ProductFieldBuilder','InternalShared','ProductDesignerPro'));
         $this->loader->AddScript('shared-core','js/dist/SharedCore_bundle.js',array('@RNTranslator','wp-element','regenerator-runtime'));
         $this->loader->AddScript('internal-shared','js/dist/InternalShared_bundle.js',array('@shared-core'));
-        $this->loader->AddScript('form-builder','js/dist/FormBuilder_bundle.js',array('wp-i18n','@RNTranslator','@internal-shared'));
+        $this->loader->AddScript('form-builder','js/dist/FormBuilder_bundle.js',array('wp-i18n','@RNTranslator','@internal-shared','jquery'));
         $this->loader->AddStyle('form-builder','js/dist/FormBuilder_bundle.css');
 
         $this->loader->AddScript('productquantity_calculator','js/dist/ProductQuantityCalculator_bundle.js',array('@form-builder'));

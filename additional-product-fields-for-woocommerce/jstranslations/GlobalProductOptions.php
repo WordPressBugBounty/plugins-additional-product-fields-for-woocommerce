@@ -1,4 +1,9 @@
 <?php return array(
+"Select a condition type"=>__("Select a condition type","rednaowooextraproduct"),
+"Product Category"=>__("Product Category","rednaowooextraproduct"),
+"Product Tag"=>__("Product Tag","rednaowooextraproduct"),
+"Product Attribute"=>__("Product Attribute","rednaowooextraproduct"),
+"AND"=>__("AND","rednaowooextraproduct"),
 "Equal to"=>__("Equal to","rednaowooextraproduct"),
 "Not Equal to"=>__("Not Equal to","rednaowooextraproduct"),
 "Is Empty"=>__("Is Empty","rednaowooextraproduct"),
