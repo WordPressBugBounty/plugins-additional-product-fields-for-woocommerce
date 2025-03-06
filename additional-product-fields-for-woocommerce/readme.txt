@@ -102,6 +102,8 @@ Introduction to the front end api
 For developers. Learn how to use the api to fill a text box or check a box programmatically.
 
 == Changelog ==
+= Extra Product Options Builder for WooCommerce 1.2.138 =
+* Fixed issue with repeater field
 = Extra Product Options Builder for WooCommerce 1.2.137 =
 * Showing a link for not image files uploaded using a file upload
 = Extra Product Options Builder for WooCommerce 1.2.135 =
