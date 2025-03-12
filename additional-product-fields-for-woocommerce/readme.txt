@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=edsev
 Tags: woocommerce fields, woocommerce, extra product options, woocommerce form, woocommerce options
 Requires at least: 3.3
 Tested up to: 6.7.1
-Stable tag: 1.2.138
+Stable tag: 1.2.140
 License: GPLv3 or later
 Author URI: https://rednao.com/
 Plugin URI: https://rednao.com/
@@ -102,6 +102,10 @@ Introduction to the front end api
 For developers. Learn how to use the api to fill a text box or check a box programmatically.
 
 == Changelog ==
+= Extra Product Options Builder for WooCommerce 1.2.140 =
+* Fixed issue with font picker
+= Extra Product Options Builder for WooCommerce 1.2.139 =
+* Fixed issue with product designer inside a global product option
 = Extra Product Options Builder for WooCommerce 1.2.138 =
 * Fixed issue with repeater field
 = Extra Product Options Builder for WooCommerce 1.2.137 =

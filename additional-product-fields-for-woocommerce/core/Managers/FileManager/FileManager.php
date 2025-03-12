@@ -139,6 +139,7 @@ class FileManager
 
     public function MaybeMoveToPermanentPath($Path)
     {
+
         $folder=$this->GetOrderFolderRootPath();
 
         if(\strpos($Path,$this->GetTempFolderRootPath()) !==0)
