@@ -1,4 +1,7 @@
 <?php return array(
+"Color"=>__("Color","rednaowooextraproduct"),
+"Link Options"=>__("Link Options","rednaowooextraproduct"),
+"The url can not be empty"=>__("The url can not be empty","rednaowooextraproduct"),
 "Required field"=>__("Required field","rednaowooextraproduct"),
 "Toggle strong style"=>__("Toggle strong style","rednaowooextraproduct"),
 "Toggle emphasis"=>__("Toggle emphasis","rednaowooextraproduct"),
@@ -15,8 +18,5 @@
 "Insert horizontal rule"=>__("Insert horizontal rule","rednaowooextraproduct"),
 "Horizontal rule"=>__("Horizontal rule","rednaowooextraproduct"),
 "Heading"=>__("Heading","rednaowooextraproduct"),
-"Type..."=>__("Type...","rednaowooextraproduct"),
-"Color"=>__("Color","rednaowooextraproduct"),
-"Link Options"=>__("Link Options","rednaowooextraproduct"),
-"The url can not be empty"=>__("The url can not be empty","rednaowooextraproduct")
+"Type..."=>__("Type...","rednaowooextraproduct")
 );
