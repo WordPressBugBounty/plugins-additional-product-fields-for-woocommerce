@@ -7,8 +7,6 @@
 "Greater or Equal Than"=>__("Greater or Equal Than","rednaowooextraproduct"),
 "Less Than"=>__("Less Than","rednaowooextraproduct"),
 "Less or Equal Than"=>__("Less or Equal Than","rednaowooextraproduct"),
-"Contains"=>__("Contains","rednaowooextraproduct"),
-"Not Contains"=>__("Not Contains","rednaowooextraproduct"),
 "Is Checked"=>__("Is Checked","rednaowooextraproduct"),
 "Is Not Checked"=>__("Is Not Checked","rednaowooextraproduct")
 );
