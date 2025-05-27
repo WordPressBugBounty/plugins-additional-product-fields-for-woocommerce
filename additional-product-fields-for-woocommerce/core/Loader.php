@@ -220,7 +220,7 @@ class Loader extends PluginBase
         add_action( 'woocommerce_product_data_panels', array( $this, 'AddProductPanel' ) );
         add_action( 'woocommerce_process_product_meta', array( $this, 'SaveProductMeta' ) );
         add_action( 'woocommerce_before_add_to_cart_button', array( $this, 'BeforeAddToCartButton' ) );
-        add_action( 'woocommerce_after_shop_loop_item',  array( $this, 'BeforeAddToCartButton' ) , 10 );
+        add_action( 'woocommerce_after_shop_loop_item',  array( $this, 'BeforeAddToCartButtonLoop' ) , 10 );
 
         add_filter('woo-extra-product-get-additional-fields',array($this,'GetAllFields'),10,5);
         \add_filter('woo-extra-product-get-field-by-type',array($this,'GetPHPField'),10,6);
@@ -312,6 +312,13 @@ class Loader extends PluginBase
 
     }
 
+    public function BeforeAddToCartButtonLoop()
+    {
+        $addInProductLoop=false;
+        if(!apply_filters('woo-extra-product-add-in-product-loop',$addInProductLoop))
+            return;
+        $this->BeforeAddToCartButton();
+    }
 
     public function BeforeAddToCartButton(){
         $previousData=null;

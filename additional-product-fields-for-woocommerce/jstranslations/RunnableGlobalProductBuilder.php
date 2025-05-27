@@ -22,5 +22,10 @@
 "Please confirm"=>__("Please confirm","rednaowooextraproduct"),
 "Create Condition"=>__("Create Condition","rednaowooextraproduct"),
 "or"=>__("or","rednaowooextraproduct"),
-"Add new group"=>__("Add new group","rednaowooextraproduct")
+"Add new group"=>__("Add new group","rednaowooextraproduct"),
+"Select a condition type"=>__("Select a condition type","rednaowooextraproduct"),
+"Product Category"=>__("Product Category","rednaowooextraproduct"),
+"Product Tag"=>__("Product Tag","rednaowooextraproduct"),
+"Product Attribute"=>__("Product Attribute","rednaowooextraproduct"),
+"AND"=>__("AND","rednaowooextraproduct")
 );
