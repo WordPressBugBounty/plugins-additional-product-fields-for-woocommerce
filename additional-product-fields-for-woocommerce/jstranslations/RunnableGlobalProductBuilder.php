@@ -19,6 +19,7 @@
 "Global Options"=>__("Global Options","rednaowooextraproduct"),
 "Name is mandatory"=>__("Name is mandatory","rednaowooextraproduct"),
 "Global options saved"=>__("Global options saved","rednaowooextraproduct"),
+"Required"=>__("Required","rednaowooextraproduct"),
 "Please confirm"=>__("Please confirm","rednaowooextraproduct"),
 "Create Condition"=>__("Create Condition","rednaowooextraproduct"),
 "or"=>__("or","rednaowooextraproduct"),
