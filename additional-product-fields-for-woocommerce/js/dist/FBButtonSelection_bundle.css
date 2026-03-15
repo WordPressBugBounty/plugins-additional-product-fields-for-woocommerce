@@ -50,3 +50,17 @@
 .buttonSelectionItemContainer.auto .ButtonSelectorItem  {
     margin-right: 10px;
 }
+
+.rnShowMoreLink{
+    text-align: center;
+    cursor: pointer;
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 5px;
+    transition: color 100ms ease-in-out;
+}
+
+.rnShowMoreLink:hover{
+    color: #c0392b;
+}
