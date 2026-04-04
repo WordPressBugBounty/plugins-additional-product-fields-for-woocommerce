@@ -51,7 +51,7 @@ class Loader extends PluginBase
         $this->GlobalTable=$wpdb->prefix.$prefix.'_global_table';
         $this->TranslationTable=$wpdb->prefix.$prefix.'_translations';
         add_action( 'init', function () {
-            load_plugin_textdomain('rednaowooextraproduct', false, dirname(plugin_basename(dirname(__FILE__))) . '/languages/');
+            load_plugin_textdomain('additional-product-fields-for-woocommerce', false, dirname(plugin_basename(dirname(__FILE__))) . '/languages/');
         });
         \add_filter('woo_extra_products_get_loader',array($this,'GetLoader'));
 
@@ -111,20 +111,20 @@ class Loader extends PluginBase
                     </a>
                  
                     <div style="margin-left: 15px;">
-                         <h2 style="margin: 0">Are you enjoing extra product options for WooCommerce? Try our form builder!</h2>
+                         <h2 style="margin: 0">'.esc_html__('Are you enjoing extra product options for WooCommerce? Try our form builder!','additional-product-fields-for-woocommerce').'</h2>
                          <ul style="list-style: circle;list-style-position: inside;margin-left: 10px;">
-                            <li>Tons of fields and all of them are available in the free version!</li>
-                            <li>Support for conditional logic, formulas, multiple step forms etc. (also available in the free version!)</li>
-                            <li>Easy to use and intuitive </li>                      
+                            <li>'.esc_html__('Tons of fields and all of them are available in the free version!','additional-product-fields-for-woocommerce').'</li>
+                            <li>'.esc_html__('Support for conditional logic, formulas, multiple step forms etc. (also available in the free version!)','additional-product-fields-for-woocommerce').'</li>
+                            <li>'.esc_html__('Easy to use and intuitive','additional-product-fields-for-woocommerce').' </li>                      
                          </ul>
                     </div>              
                 </div>
                     
                 <div style="margin-bottom: 10px">
-                    <a target="_blank" style="vertical-align: top;" href="https://wordpress.org/plugins/all-in-one-forms/" class="button-primary">Learn more</a>
+                    <a target="_blank" style="vertical-align: top;" href="https://wordpress.org/plugins/all-in-one-forms/" class="button-primary">'.esc_html__('Learn more','additional-product-fields-for-woocommerce').'</a>
                     <form style="display: inline-block;vertical-align: top;">
                         <input type="hidden" name="DismissAllInOneNotice" value="1"/>
-                        <button class="button-secondary">'.__("Do not show this again","rednaowooextraproduct").'</button>
+                        <button class="button-secondary">'.__("Do not show this again","additional-product-fields-for-woocommerce").'</button>
                     </form>
                 </div>
                 
@@ -137,7 +137,7 @@ class Loader extends PluginBase
 
     public function AddMenuFr(){
         if(!$this->IsPR())
-            add_submenu_page('woocommerce','Global product options','Global product options',
+            add_submenu_page('woocommerce',__('Global product options','additional-product-fields-for-woocommerce'),__('Global product options','additional-product-fields-for-woocommerce'),
                 'manage_woocommerce','woocommerce_extra_product_add_global_options',
                 array($this,'AddGlobalOptionsFr'));
     }
@@ -163,7 +163,7 @@ class Loader extends PluginBase
     public function CheckIfPDFAdmin(){
         if(!current_user_can('manage_options'))
         {
-            die('Forbidden');
+            die(__('Forbidden','additional-product-fields-for-woocommerce'));
         }
     }
 
@@ -440,8 +440,9 @@ class Loader extends PluginBase
             foreach($options->AdditionalDependencies as $dependency)
             {
                 $this->AddScript($dependency,'js/dist/'.$dependency.'_bundle.js',array('@form-builder'));
-                if($dependency=='ImagePreviewManager')
+                if($dependency=='ImagePreviewManager'||$dependency=='Tooltip')
                     $this->AddStyle($dependency,'js/dist/'.$dependency.'_bundle.css');
+                
                 $rnProdDependencies[]='@'.$dependency;
             }
         }
@@ -557,7 +558,7 @@ class Loader extends PluginBase
 
     public function AddProductTab($tabs){
         $tabs['rednao-advanced-products'] = array(
-            'label'  => esc_html__( 'Advanced Product Options', 'rednaowooextraproduct' ),
+            'label'  => esc_html__( 'Advanced Product Options', 'additional-product-fields-for-woocommerce' ),
             'target' => 'rednao-advanced-products',
             'class'  => array( 'rednao-advanced-products','hide_if_grouped')
         );

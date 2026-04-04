@@ -55,7 +55,7 @@ abstract class AjaxBase
                         break;
                     }
                 if(!$hasCapability)
-                    $this->SendErrorMessage('Forbidden');
+                    $this->SendErrorMessage(__('Forbidden','additional-product-fields-for-woocommerce'));
             }
             $this->$methodName();
             die();
@@ -85,7 +85,7 @@ abstract class AjaxBase
                 if(isset($_GET['data']))
                     $this->data=json_decode(stripslashes($_GET['data']));
                 else
-                $this->SendErrorMessage('Invalid operation, data does not exists');
+                $this->SendErrorMessage(__('Invalid operation, data does not exists','additional-product-fields-for-woocommerce'));
         return $this->data;
     }
 
@@ -142,6 +142,6 @@ abstract class AjaxBase
             $nonce=$_POST['_nonce'];
 
         if($nonce==''||!\wp_verify_nonce($nonce, $this->prefix.'_'.$nonceName))
-            $this->SendErrorMessage(_('Invalid request, please refresh the screen and try again'));
+            $this->SendErrorMessage(__('Invalid request, please refresh the screen and try again','additional-product-fields-for-woocommerce'));
     }
 }

@@ -5,8 +5,8 @@
  * Description: Create extra options to each of your products
  * Author: RedNao
  * Author URI: http://rednao.com
- * Version: 1.2.157
- * Text Domain: rednaowooextraproduct
+ * Version: 1.2.159
+ * Text Domain: additional-product-fields-for-woocommerce
  * Domain Path: /languages/
  * Network: true
  * License: GPLv3
@@ -31,7 +31,7 @@ function rednaowooextraproduct($className)
 }
 
 
-$loader=new Loader(__FILE__,'rednaowooextraproduct',__FILE__,array(
+$loader=new Loader(__FILE__,'additional-product-fields-for-woocommerce',__FILE__,array(
     'ItemId'=>15,
     'Author'=>'Edgar Rojas',
     'UpdateURL'=>'https://productbuilder.rednao.com',

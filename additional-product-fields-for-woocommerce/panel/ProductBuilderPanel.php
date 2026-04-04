@@ -124,8 +124,8 @@ class ProductBuilderPanel
             "LicenseKey"=>$licenseKey,
             "DefaultShowFinalAmount"=>apply_filters('woo-extra-product-default-show-final-amount','show'),
             "DefaultShowOptionsAmount"=>apply_filters('woo-extra-product-default-show-options-amount','show'),
-            "DefaultFinalAmountLabel"=>__("Final Total","rednaowooextraproduct"),
-            "DefaultOptionAmountLabel"=>__("Options amount","rednaowooextraproduct"),
+            "DefaultFinalAmountLabel"=>__("Final Total","additional-product-fields-for-woocommerce"),
+            "DefaultOptionAmountLabel"=>__("Options amount","additional-product-fields-for-woocommerce"),
             'SiteURL'=>\get_home_url(),
             "ItemId"=>$this->loader->GetConfig('ItemId'),
             'Languages'=>$translator==null?[]:$translator->GetLanguages(),
@@ -143,7 +143,7 @@ class ProductBuilderPanel
             <input type="hidden" name="rednao_advanced_product_options" id="rednao_advanced_product_options_input" value=""/>
             <input type="hidden" name="rednao_advanced_product_server_options" id="rednao_advanced_product_server_options_input" value=""/>
             <div id="rednao-advanced-products-designer">
-                Loading builder, please wait a bit...
+                <?php echo esc_html__('Loading builder, please wait a bit...','additional-product-fields-for-woocommerce'); ?>
             </div>
         </div>
 <?php

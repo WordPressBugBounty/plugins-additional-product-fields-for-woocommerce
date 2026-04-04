@@ -43,7 +43,7 @@ class GlobalProductAjax extends AjaxBase
             $this->SendSuccessMessage('True');
         }
 
-        $this->SendErrorMessage('Sorry an error occurred, please try again');
+        $this->SendErrorMessage(__('Sorry an error occurred, please try again','additional-product-fields-for-woocommerce'));
 
     }
 

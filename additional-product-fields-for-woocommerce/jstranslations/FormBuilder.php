@@ -1,8 +1,8 @@
 <?php return array(
-"Required"=>__("Required","rednaowooextraproduct"),
-"Next"=>__("Next","rednaowooextraproduct"),
-"Previous"=>__("Previous","rednaowooextraproduct"),
-"Add to cart"=>__("Add to cart","rednaowooextraproduct"),
-"Options amount"=>__("Options amount","rednaowooextraproduct"),
-"Final Total"=>__("Final Total","rednaowooextraproduct")
+"Required"=>__("Required","additional-product-fields-for-woocommerce"),
+"Next"=>__("Next","additional-product-fields-for-woocommerce"),
+"Previous"=>__("Previous","additional-product-fields-for-woocommerce"),
+"Add to cart"=>__("Add to cart","additional-product-fields-for-woocommerce"),
+"Options amount"=>__("Options amount","additional-product-fields-for-woocommerce"),
+"Final Total"=>__("Final Total","additional-product-fields-for-woocommerce")
 );

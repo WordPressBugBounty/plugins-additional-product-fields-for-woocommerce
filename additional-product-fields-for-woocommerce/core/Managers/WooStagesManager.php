@@ -224,7 +224,7 @@ class WooStagesManager
 
         \wp_send_json_error(array(
             'success'=>false,
-            'errorMessage'=>'An error occurred, please try again'
+            'errorMessage'=>__('An error occurred, please try again','additional-product-fields-for-woocommerce')
         ));
         die();
     }
@@ -389,7 +389,7 @@ class WooStagesManager
             $link.='&';
         $link.='cart_item='.$cart_item['key'].'&nonce='.$nonce;
 
-        $title= $title."<br/><a class='rn-edit-options' style=\"font-size: 12px; display: block;\" href=\"$link\">".__("Edit Options","rednaowooextraproduct")."</a>";
+        $title= $title."<br/><a class='rn-edit-options' style=\"font-size: 12px; display: block;\" href=\"$link\">".__("Edit Options","additional-product-fields-for-woocommerce")."</a>";
         return $title;
 
 

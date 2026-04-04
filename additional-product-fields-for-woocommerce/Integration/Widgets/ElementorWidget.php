@@ -8,7 +8,7 @@ class ElementorWidget extends \Elementor\Widget_Base
 {
 
     public function get_title() {
-        return esc_html__( 'Extra Product Options', 'rednaowooextraproduct' );
+        return esc_html__( 'Extra Product Options', 'additional-product-fields-for-woocommerce' );
     }
 
 

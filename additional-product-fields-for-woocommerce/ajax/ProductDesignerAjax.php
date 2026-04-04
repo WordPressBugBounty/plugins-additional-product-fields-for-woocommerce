@@ -54,7 +54,7 @@ class ProductDesignerAjax extends AjaxBase
         $productNonce=$this->GetRequired('ProductNonce');
 
         if(!\wp_verify_nonce($productNonce,$productId.'_product_designer'))
-            $this->SendErrorMessage('Invalid request');
+            $this->SendErrorMessage(__('Invalid request','additional-product-fields-for-woocommerce'));
 
         $this->SendSuccessMessage((new ProductRepository())->GetVariations($productId));
 
@@ -71,12 +71,12 @@ class ProductDesignerAjax extends AjaxBase
          $emailManager->Initialize($formBuilder,$email);
          if($emailManager->Send())
          {
-            $this->SendSuccessMessage('Email sent successfully');
+            $this->SendSuccessMessage(__('Email sent successfully','additional-product-fields-for-woocommerce'));
          }else{
-             $error='An error occurred while trying to send the email.';
+             $error=__('An error occurred while trying to send the email.','additional-product-fields-for-woocommerce');
              if($emailManager->Error!='')
              {
-                 $error.=' Additional detail:'.$emailManager->Error;
+                 $error.=__(' Additional detail:','additional-product-fields-for-woocommerce').$emailManager->Error;
              }
              $this->SendErrorMessage($error);
          }

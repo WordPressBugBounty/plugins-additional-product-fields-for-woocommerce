@@ -12,32 +12,7 @@ namespace rednaowooextraproduct\core;
 class ReviewHelper
 {
     private $thresholds=array(20,50,100);
-    private $stages=array(
-        array(
-            'Threshold'=>50,
-            'content'=>"Hello!, you have created <strong>%s orders</strong> using custom fields, that's Great! Could you do me a BIG favor and give it a
-                                                5-star rating on WordPress? Good reviews really help to spread the word and keep me motivated to continuing maintaining and improving the plugin =)",
-            'Reviewlink'=>'Sure, keep up the good work',
-            'Remindmelink'=>'Nope, maybe later',
-            'DontShowAgain'=>'I already did'
-
-        ),
-        array(
-            'Threshold'=>100,
-            'content'=>"Hello! Its me again =), you have generated <strong>%s orders</strong> using custom fields, so i was wondering, would you have time to 5 star review the plugin really quick? I know you are busy and i don't like to bother you but reviewing the plugin is really important
-and ensure the continuation of its development.",
-            'Reviewlink'=>'Sure, i will review the plugin really quick',
-            'Remindmelink'=>'Sorry but i am not ready yet, maybe later',
-            'DontShowAgain'=>'I already did'
-        ),
-        array(
-            'Threshold'=>200,
-            'content'=>"Hello! sorry to bother you again (this is the last time i do it), i just wanted to tell you that you have generated <strong>%s orders</strong> using custom fields which is amazing. Could you please help me and 5-star review the plugin? it will take you less than 1 minutes and will 
-greatly help me promote and keep growing this plugin that i love and i hope it has been useful for you.",
-            'Reviewlink'=>'Alright, i will review the plugin quickly',
-            'DontShowAgain'=>'I don\'t want to review it =('
-        )
-    );
+    private $stages;
 
     /** @var Loader */
     public $Loader;
@@ -45,6 +20,32 @@ greatly help me promote and keep growing this plugin that i love and i hope it h
     {
         $this->currentStage=null;
         $this->Loader=$loader;
+        $this->stages=array(
+            array(
+                'Threshold'=>50,
+                'content'=>__("Hello!, you have created <strong>%s orders</strong> using custom fields, that's Great! Could you do me a BIG favor and give it a
+                                                    5-star rating on WordPress? Good reviews really help to spread the word and keep me motivated to continuing maintaining and improving the plugin =)",'additional-product-fields-for-woocommerce'),
+                'Reviewlink'=>__('Sure, keep up the good work','additional-product-fields-for-woocommerce'),
+                'Remindmelink'=>__('Nope, maybe later','additional-product-fields-for-woocommerce'),
+                'DontShowAgain'=>__('I already did','additional-product-fields-for-woocommerce')
+
+            ),
+            array(
+                'Threshold'=>100,
+                'content'=>__("Hello! Its me again =), you have generated <strong>%s orders</strong> using custom fields, so i was wondering, would you have time to 5 star review the plugin really quick? I know you are busy and i don't like to bother you but reviewing the plugin is really important
+and ensure the continuation of its development.",'additional-product-fields-for-woocommerce'),
+                'Reviewlink'=>__('Sure, i will review the plugin really quick','additional-product-fields-for-woocommerce'),
+                'Remindmelink'=>__('Sorry but i am not ready yet, maybe later','additional-product-fields-for-woocommerce'),
+                'DontShowAgain'=>__('I already did','additional-product-fields-for-woocommerce')
+            ),
+            array(
+                'Threshold'=>200,
+                'content'=>__("Hello! sorry to bother you again (this is the last time i do it), i just wanted to tell you that you have generated <strong>%s orders</strong> using custom fields which is amazing. Could you please help me and 5-star review the plugin? it will take you less than 1 minutes and will 
+greatly help me promote and keep growing this plugin that i love and i hope it has been useful for you.",'additional-product-fields-for-woocommerce'),
+                'Reviewlink'=>__('Alright, i will review the plugin quickly','additional-product-fields-for-woocommerce'),
+                'DontShowAgain'=>__('I don\'t want to review it =(','additional-product-fields-for-woocommerce')
+            )
+        );
     }
 
 

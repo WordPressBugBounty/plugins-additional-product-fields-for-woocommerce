@@ -32,7 +32,7 @@ class OrderDesignerAjax extends AjaxBase
 
     public function GetFileUpload(){
         if(!isset($_GET['path']))
-            $this->SendErrorMessage('Invalid operation');
+            $this->SendErrorMessage(__('Invalid operation','additional-product-fields-for-woocommerce'));
 
         $path=sanitize_file_name(basename(\strval($_GET['path'])));
         $name=$_GET['name'];
@@ -51,7 +51,7 @@ class OrderDesignerAjax extends AjaxBase
 
         if(!\file_exists($realPath))
         {
-            $this->SendErrorMessage('File does not exists');
+            $this->SendErrorMessage(__('File does not exists','additional-product-fields-for-woocommerce'));
         }
 
 

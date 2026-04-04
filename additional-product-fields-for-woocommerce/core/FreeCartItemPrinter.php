@@ -65,12 +65,12 @@ class FreeCartItemPrinter
         if($value->Value)
         {
             $url = esc_attr($this->Loader->URL . 'images/icons/check.png');
-            $alt=__('Yes');
+            $alt=__('Yes','additional-product-fields-for-woocommerce');
         }
         else
         {
             $url = esc_attr($this->Loader->URL . 'images/icons/times.png');
-            $alt=__('No');
+            $alt=__('No','additional-product-fields-for-woocommerce');
         }
 
         $display.="<img style='width:16px;height:16px;margin-left:4px' src='$url' alt='$alt'/>
@@ -175,12 +175,12 @@ class FreeCartItemPrinter
         if($value->Value)
         {
             $url = esc_attr($this->Loader->URL . 'images/icons/check.png');
-            $alt=__('Yes');
+            $alt=__('Yes','additional-product-fields-for-woocommerce');
         }
         else
         {
             $url = esc_attr($this->Loader->URL . 'images/icons/times.png');
-            $alt=__('No');
+            $alt=__('No','additional-product-fields-for-woocommerce');
         }
 
         $html.="<div style='width: 100%;display: flex;align-items: center;'>";
