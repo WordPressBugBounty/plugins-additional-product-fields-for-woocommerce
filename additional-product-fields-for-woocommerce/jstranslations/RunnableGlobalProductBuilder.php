@@ -1,5 +1,6 @@
 <?php return array(
 "An error occurred "=>__("An error occurred ","additional-product-fields-for-woocommerce"),
+"Global options saved"=>__("Global options saved","additional-product-fields-for-woocommerce"),
 "Global Options Designer"=>__("Global Options Designer","additional-product-fields-for-woocommerce"),
 "Save"=>__("Save","additional-product-fields-for-woocommerce"),
 "Settings"=>__("Settings","additional-product-fields-for-woocommerce"),
@@ -18,9 +19,5 @@
 "Importing a new template will delete the fields that you have created so far, continue?"=>__("Importing a new template will delete the fields that you have created so far, continue?","additional-product-fields-for-woocommerce"),
 "Yes"=>__("Yes","additional-product-fields-for-woocommerce"),
 "Global Options"=>__("Global Options","additional-product-fields-for-woocommerce"),
-"Name is mandatory"=>__("Name is mandatory","additional-product-fields-for-woocommerce"),
-"Global options saved"=>__("Global options saved","additional-product-fields-for-woocommerce"),
-"Create Condition"=>__("Create Condition","additional-product-fields-for-woocommerce"),
-"or"=>__("or","additional-product-fields-for-woocommerce"),
-"Add new group"=>__("Add new group","additional-product-fields-for-woocommerce")
+"Name is mandatory"=>__("Name is mandatory","additional-product-fields-for-woocommerce")
 );

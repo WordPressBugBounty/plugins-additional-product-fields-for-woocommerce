@@ -1,7 +1,4 @@
 <?php return array(
-"Color"=>__("Color","additional-product-fields-for-woocommerce"),
-"Link Options"=>__("Link Options","additional-product-fields-for-woocommerce"),
-"The url can not be empty"=>__("The url can not be empty","additional-product-fields-for-woocommerce"),
 "Required field"=>__("Required field","additional-product-fields-for-woocommerce"),
 "Toggle strong style"=>__("Toggle strong style","additional-product-fields-for-woocommerce"),
 "Toggle emphasis"=>__("Toggle emphasis","additional-product-fields-for-woocommerce"),
@@ -18,5 +15,8 @@
 "Insert horizontal rule"=>__("Insert horizontal rule","additional-product-fields-for-woocommerce"),
 "Horizontal rule"=>__("Horizontal rule","additional-product-fields-for-woocommerce"),
 "Heading"=>__("Heading","additional-product-fields-for-woocommerce"),
-"Type..."=>__("Type...","additional-product-fields-for-woocommerce")
+"Type..."=>__("Type...","additional-product-fields-for-woocommerce"),
+"Color"=>__("Color","additional-product-fields-for-woocommerce"),
+"Link Options"=>__("Link Options","additional-product-fields-for-woocommerce"),
+"The url can not be empty"=>__("The url can not be empty","additional-product-fields-for-woocommerce")
 );
