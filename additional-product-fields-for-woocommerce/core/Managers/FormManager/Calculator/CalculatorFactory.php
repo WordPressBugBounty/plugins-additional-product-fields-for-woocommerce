@@ -79,9 +79,13 @@ class CalculatorFactory
                 return new PricePerRowCalculator($field);
             case 'product_quantity':
                 return new ProductQuantityCalculator($field);
+            case 'formula_item':
+                $formulaItem= \apply_filters('rednaowooextraproduct_get_formula_item_calculator',null,$field);
+                if($formulaItem==null)
+                    return new NoneCalculator($field);
+                return $formulaItem;
             case 'GroupPanel':
             case 'price_per_range':
-            case 'formula_item':
                 return new NoneCalculator($field);
         }
 

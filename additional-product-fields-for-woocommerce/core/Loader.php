@@ -46,7 +46,7 @@ class Loader extends PluginBase
 
     public function __construct($filePath,$prefix,$rootPath,$config)
     {
-        parent::__construct($filePath,$prefix,109,99,$rootPath,$config);
+        parent::__construct($filePath,$prefix,109,100,$rootPath,$config);
         global $wpdb;
         $this->GlobalTable=$wpdb->prefix.$prefix.'_global_table';
         $this->TranslationTable=$wpdb->prefix.$prefix.'_translations';

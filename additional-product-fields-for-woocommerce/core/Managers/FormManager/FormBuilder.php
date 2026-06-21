@@ -138,7 +138,9 @@ class FormBuilder implements ContainerDataRetriever
         foreach($this->Fields as $field)
         {
             if(!$field->Calculator->GetDependsOnOtherFields())
+            {
                 $field->Calculator->ExecuteAndUpdate();
+            }
         }
 
 

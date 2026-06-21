@@ -37,7 +37,7 @@ abstract class CalculatorBase
             $this->IsUsed=true;
             $this->Quantity=$newQuantity;
             $price=NumericUtilities::ParseNumber($newPrice,0);
-            if($newSale!='')
+            if($newSale!=''&&$newSale!=0)
             {
                 $this->IsUsed=true;
                 $salePrice=NumericUtilities::ParseNumber($newSale,0);

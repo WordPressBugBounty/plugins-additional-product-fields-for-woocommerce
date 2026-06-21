@@ -60,6 +60,10 @@ class WooStagesManager
         add_action( 'admin_enqueue_scripts', array( $this, 'RegisterAdminScript' ) );
         add_action( 'wp_ajax_woocommerce_tm_get_variations_array', array( $this, 'GetVariations' ) );
 
+        // Soporte del enlace "Edit Options" en el Bloque de Carrito / Mini-cart (Store API).
+        add_action( 'woocommerce_blocks_loaded', array( $this, 'RegisterStoreApiCartData' ) );
+        add_action( 'wp_enqueue_scripts', array( $this, 'EnqueueBlockCartScript' ), 20 );
+
         //  add_action( 'woocommerce_cart_loaded_from_session',array($this,'LoadFromSession'));
 
     }
@@ -395,6 +399,88 @@ class WooStagesManager
 
     }
 
+    /**
+     * Construye la URL para editar las opciones de un item del carrito.
+     * Coincide con la que se valida en Loader::BeforeAddToCartButton() (cart_item + nonce).
+     *
+     * @param array $cart_item
+     * @return string
+     */
+    private function BuildEditOptionsUrl($cart_item){
+        /** @var WC_Product_Simple $data */
+        $data = $cart_item['data'];
+        $link = $data->get_permalink( $cart_item );
+        $key  = $cart_item['key'];
+        $nonce = \wp_create_nonce( 'edit_' . $key );
+        $link .= ( \strpos( $link, '?' ) === false ? '?' : '&' ) . 'cart_item=' . $key . '&nonce=' . $nonce;
+
+        return $link;
+    }
+
+    /**
+     * Expone la URL de edicion de cada item del carrito en la Store API
+     * (la usa el Bloque de Carrito / Mini-cart, que ignora woocommerce_cart_item_name).
+     */
+    public function RegisterStoreApiCartData(){
+        if( ! \function_exists( 'woocommerce_store_api_register_endpoint_data' ) )
+            return;
+
+        \woocommerce_store_api_register_endpoint_data( array(
+            'endpoint'        => 'cart-item',
+            'namespace'       => 'woo-extra-products',
+            'data_callback'   => array( $this, 'StoreApiCartItemData' ),
+            'schema_callback' => array( $this, 'StoreApiCartItemSchema' ),
+            'schema_type'     => ARRAY_A,
+        ) );
+    }
+
+    public function StoreApiCartItemData( $cart_item ){
+        if( ! isset( $cart_item['rn_entry'] ) )
+            return array();
+
+        return array(
+            'edit_url'   => $this->BuildEditOptionsUrl( $cart_item ),
+            'edit_label' => __( "Edit Options", "additional-product-fields-for-woocommerce" ),
+        );
+    }
+
+    public function StoreApiCartItemSchema(){
+        return array(
+            'edit_url'   => array(
+                'description' => __( "Edit options URL", "additional-product-fields-for-woocommerce" ),
+                'type'        => array( 'string', 'null' ),
+                'readonly'    => true,
+            ),
+            'edit_label' => array(
+                'description' => __( "Edit options label", "additional-product-fields-for-woocommerce" ),
+                'type'        => array( 'string', 'null' ),
+                'readonly'    => true,
+            ),
+        );
+    }
+
+    /**
+     * Encola el script que pinta el enlace "Edit Options" en el Bloque de Carrito / Mini-cart.
+     * Solo se carga cuando WooCommerce Blocks esta presente en la pagina.
+     */
+    public function EnqueueBlockCartScript(){
+        if( ! \function_exists( 'wp_script_is' ) )
+            return;
+        if( ! \wp_script_is( 'wc-blocks-checkout', 'registered' ) )
+            return;
+
+        $file = \dirname( \dirname( __DIR__ ) ) . '/scripts/cart-block-edit.js';
+        $ver  = \file_exists( $file ) ? \filemtime( $file ) : '1.0';
+
+        \wp_enqueue_script(
+            'rn-cart-block-edit',
+            $this->Loader->URL . 'scripts/cart-block-edit.js',
+            array( 'wc-blocks-checkout' ),
+            $ver,
+            true
+        );
+    }
+
 
     public function AddToCartValidation($valid, $product_id, $quantity,$variation =''){
         if(isset($_POST['RednaoSerializedFields']))
@@ -427,8 +513,8 @@ class WooStagesManager
             )
                 return true;
             else{
-                //wc_add_notice( __( 'Invalid product price, please try again.', 'woocommerce' ), 'error' );
-                //return false;
+                wc_add_notice( __( 'Invalid product price, please try again.', 'woocommerce' ), 'error' );
+                return false;
 
             }
         }

@@ -66,11 +66,16 @@ class OptionsCalculator extends CalculatorBase
             $optionsTotal['Price']=$optionsTotal['UnitPrice']*$optionsTotal['Quantity'];
 
             $this->OptionsTotal[]=$optionsTotal;
-            if(\floatval($currentOption->SalePrice)!=\floatval($optionsTotal['SalePrice'])||
+            //La validacion por-opcion solo aplica cuando el cliente envia los totales por opcion
+            //(campos de tipo "options"). Los campos formula_item no los serializan (su calculador
+            //no es OptionsCalculator), asi que sin este guard se leerian UnitPrice/Price indefinidos
+            //(warning) y se bloquearia la compra por error. El total a nivel formulario se sigue
+            //validando en WooStagesManager.
+            if(isset($currentOption->SalePrice)&&isset($currentOption->UnitPrice)&&isset($currentOption->Price)&&(
+                \floatval($currentOption->SalePrice)!=\floatval($optionsTotal['SalePrice'])||
                 \floatval($currentOption->UnitPrice)!=\floatval($optionsTotal['UnitPrice'])||
                 \floatval($currentOption->Price)!=\floatval($optionsTotal['Price'])
-
-            )
+            ))
                 $this->IsValid=false;
 
 
