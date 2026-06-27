@@ -159,6 +159,10 @@ class FBMultipleOptionsField extends FBFieldBase
         if(count($columnValues)==0)
             return 0;
 
+      
+        if(count($columnValues)==1)
+            return $columnValues[0];
+
         return $columnValues;
     }
 
@@ -190,6 +194,11 @@ class FBMultipleOptionsField extends FBFieldBase
 
         if(count($columnValues)==0)
             return 0;
+
+        //Paridad con JS (ver GetColumnValue): con una sola opcion seleccionada devolvemos escalar
+        //para que las comparaciones "==" de la formula coincidan entre servidor y cliente.
+        if(count($columnValues)==1)
+            return $columnValues[0];
 
         return $columnValues;
     }

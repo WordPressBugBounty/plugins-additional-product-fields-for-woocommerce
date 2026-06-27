@@ -65,8 +65,8 @@ class ContainerManager
                        {
                            if(isset($currentField->Options->Id)&&isset($element->Options->Id)&& $currentField->Options->Id==$element->Options->Id)
                                $found=true;
-                       }
-                        return $found;
+                       }                
+                        return !$found;
                     })));
         }
 

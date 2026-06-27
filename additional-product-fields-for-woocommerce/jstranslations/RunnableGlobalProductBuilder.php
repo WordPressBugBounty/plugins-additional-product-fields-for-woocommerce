@@ -1,5 +1,6 @@
 <?php return array(
 "An error occurred "=>__("An error occurred ","additional-product-fields-for-woocommerce"),
+"Global options saved"=>__("Global options saved","additional-product-fields-for-woocommerce"),
 "Global Options Designer"=>__("Global Options Designer","additional-product-fields-for-woocommerce"),
 "Save"=>__("Save","additional-product-fields-for-woocommerce"),
 "Settings"=>__("Settings","additional-product-fields-for-woocommerce"),
@@ -19,8 +20,13 @@
 "Yes"=>__("Yes","additional-product-fields-for-woocommerce"),
 "Global Options"=>__("Global Options","additional-product-fields-for-woocommerce"),
 "Name is mandatory"=>__("Name is mandatory","additional-product-fields-for-woocommerce"),
-"Global options saved"=>__("Global options saved","additional-product-fields-for-woocommerce"),
 "Create Condition"=>__("Create Condition","additional-product-fields-for-woocommerce"),
 "or"=>__("or","additional-product-fields-for-woocommerce"),
-"Add new group"=>__("Add new group","additional-product-fields-for-woocommerce")
+"Add new group"=>__("Add new group","additional-product-fields-for-woocommerce"),
+"Select a condition type"=>__("Select a condition type","additional-product-fields-for-woocommerce"),
+"Product Category"=>__("Product Category","additional-product-fields-for-woocommerce"),
+"Product Tag"=>__("Product Tag","additional-product-fields-for-woocommerce"),
+"Product Attribute"=>__("Product Attribute","additional-product-fields-for-woocommerce"),
+"AND"=>__("AND","additional-product-fields-for-woocommerce"),
+"Variations"=>__("Variations","additional-product-fields-for-woocommerce")
 );
