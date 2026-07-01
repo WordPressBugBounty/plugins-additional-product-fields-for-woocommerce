@@ -17,6 +17,7 @@ use rednaoformpdfbuilder\ajax\TemplateListAjax;
 use rednaoformpdfbuilder\Integration\Processors\Entry\Retriever\EntryRetrieverBase;
 use rednaoformpdfbuilder\Integration\Processors\Loader\ProcessorLoaderBase;
 
+use rednaowooextraproduct\ajax\AIAjax;
 use rednaowooextraproduct\ajax\OrderDesignerAjax;
 use rednaowooextraproduct\ajax\ProductDesignerAjax;
 use rednaowooextraproduct\core\Managers\FormManager\Fields\FBTextField;
@@ -58,6 +59,7 @@ class Loader extends PluginBase
         new WooStagesManager($this);
         new ProductDesignerAjax($this,$prefix);
         new OrderDesignerAjax($this,$prefix);
+        new AIAjax($this,$prefix);
         require_once $this->DIR.'Integration/RNEPO.php';
         \add_action( 'admin_menu', array( $this, 'AddMenuFr' ), 1000 );
         add_action('admin_notices', array($this,'ShowNotice'));

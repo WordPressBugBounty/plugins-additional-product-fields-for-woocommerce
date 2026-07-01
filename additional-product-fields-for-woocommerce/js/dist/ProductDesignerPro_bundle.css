@@ -184,6 +184,930 @@ li.CodeMirror-hint-active{
 .FunctionPickerItem:hover{
     background-color: #f9f9f9;
 }
+/* ============================================
+   AI Chat Panel - Reusable Chat Control Styles
+   ============================================ */
+
+/* ============================================
+   Chat Panel (Container)
+   ============================================ */
+.aiChatPanel {
+    width: 30%;
+    min-width: 280px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #e0e0e0;
+    background: #fafafa;
+    position: relative;
+}
+
+.aiChatPanel .chatHeader {
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    min-height: 20px;
+}
+
+.aiChatPanel .chatHeader svg {
+    width: 16px;
+    height: 16px;
+}
+
+.aiChatPanel .chatMessages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.aiChatPanel .chatMessages::-webkit-scrollbar {
+    width: 5px;
+}
+
+.aiChatPanel .chatMessages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.aiChatPanel .chatMessages::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border-radius: 10px;
+}
+
+/* ============================================
+   Chat Messages
+   ============================================ */
+.aiChatMessage {
+    display: flex;
+    flex-direction: column;
+    animation: messageSlideIn 0.3s ease-out;
+}
+
+.aiChatMessage.user {
+    align-items: flex-end;
+}
+
+.aiChatMessage.assistant {
+    align-items: flex-start;
+}
+
+.aiChatMessage .messageBubble {
+    max-width: 90%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 13px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.aiChatMessage.user .messageBubble {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.aiChatMessage.assistant .messageBubble {
+    background: white;
+    color: #333;
+    border: 1px solid #e8e8e8;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.aiChatMessage .messageRole {
+    font-size: 11px;
+    color: #999;
+    margin-bottom: 4px;
+    padding: 0 4px;
+    font-weight: 500;
+}
+
+.aiChatMessage .messageActions {
+    margin-top: 8px;
+    display: flex;
+    gap: 6px;
+}
+
+.aiChatMessage .messageActions button {
+    padding: 5px 12px;
+    border-radius: 14px;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.aiChatMessage .messageActions .btnUseTemplate {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.aiChatMessage .messageActions .btnUseTemplate:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(16, 185, 129, 0.4);
+}
+
+.aiChatMessage .messageActions .btnRetry {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+}
+
+.aiChatMessage .messageActions .btnRetry:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(245, 158, 11, 0.4);
+}
+
+.aiChatMessage .messageActions .btnRestore {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+}
+
+.aiChatMessage .messageActions .btnRestore:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(239, 68, 68, 0.4);
+}
+
+/* ============================================
+   Chat Input Area
+   ============================================ */
+.aiChatInputArea {
+    padding: 12px;
+    background: white;
+    flex-shrink: 0;
+}
+
+.aiChatInputArea .inputWrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 6px 6px 14px;
+    transition: box-shadow 0.2s ease;
+}
+
+.aiChatInputArea .inputWrapper:focus-within {
+    box-shadow: none;
+    outline: none;
+}
+
+.aiChatInputArea textarea {
+    flex: 1;
+    border: none !important;
+    background: transparent !important;
+    resize: none;
+    font-size: 13px;
+    font-family: inherit;
+    line-height: 1.4;
+    min-height: 20px;
+    max-height: 100px;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 4px 0;
+}
+
+.aiChatInputArea textarea:focus {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.aiChatInputArea .btnSend {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.aiChatInputArea .btnSend:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+.aiChatInputArea .btnSend:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.aiChatInputArea .btnSend svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* ============================================
+   Loading Indicator
+   ============================================ */
+.aiLoadingDots {
+    display: flex;
+    gap: 4px;
+    padding: 4px 0;
+}
+
+.aiLoadingDots span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #999;
+    animation: dotBounce 1.4s ease-in-out infinite;
+}
+
+.aiLoadingDots span:nth-child(1) { animation-delay: 0s; }
+.aiLoadingDots span:nth-child(2) { animation-delay: 0.2s; }
+.aiLoadingDots span:nth-child(3) { animation-delay: 0.4s; }
+
+/* ============================================
+   File Attachments
+   ============================================ */
+.aiFilePreviewArea {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 12px;
+    animation: messageSlideIn 0.2s ease-out;
+}
+
+.aiFilePreviewItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    font-size: 12px;
+    max-width: 180px;
+    position: relative;
+}
+
+.aiFilePreviewItem .fileThumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.aiFilePreviewItem .fileIcon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #666;
+}
+
+.aiFilePreviewItem .fileName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100px;
+    color: #555;
+}
+
+.aiFilePreviewItem .fileRemove {
+    cursor: pointer;
+    color: #999;
+    font-size: 12px;
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.aiFilePreviewItem .fileRemove:hover {
+    color: #e74c3c;
+}
+
+.aiChatInputArea .btnAttach {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: #999;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.aiChatInputArea .btnAttach:hover {
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.08);
+}
+
+.aiChatInputArea .btnAttach svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Drag over state */
+.aiChatPanel.dragOver {
+    background: rgba(102, 126, 234, 0.05);
+}
+
+/* Drag overlay */
+.aiDragOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(102, 126, 234, 0.12);
+    backdrop-filter: blur(2px);
+    border: 2px dashed #667eea;
+    border-radius: 4px;
+    pointer-events: none;
+    animation: fadeIn 0.15s ease-out;
+}
+
+.aiDragOverlayContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 24px 32px;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.25);
+    font-size: 14px;
+    font-weight: 600;
+    color: #667eea;
+}
+
+.aiDragOverlayContent .aiDragIcon {
+    font-size: 32px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Model selector */
+.aiChatInputArea .modelSelector {
+    background: transparent;
+    border: none;
+    font-size: 11px;
+    color: #999;
+    cursor: pointer;
+    outline: none;
+    padding: 2px 4px;
+}
+
+.aiChatInputArea .modelSelector:hover {
+    color: #667eea;
+}
+
+/* ============================================
+   AI Disclaimer
+   ============================================ */
+.aiChatInputArea .aiDisclaimer {
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+    margin-top: 6px;
+    line-height: 1.3;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dotBounce {
+    0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   External Chat Mode — Toggle Switch
+   ============================================ */
+.aiChatPanel .chatHeader .externalModeToggle {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.aiChatPanel .chatHeader .toggleLabel {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    user-select: none;
+}
+
+/* Toggle switch styles */
+.toggleSwitch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 18px;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.toggleSwitch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggleSlider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+    border-radius: 18px;
+}
+
+.toggleSlider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+.toggleSwitch input:checked + .toggleSlider {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.toggleSwitch input:checked + .toggleSlider:before {
+    transform: translateX(16px);
+}
+
+/* ============================================
+   External Chat Mode — Banner
+   ============================================ */
+.externalModeBanner {
+    background: linear-gradient(135deg, #fef3cd 0%, #fce8b2 100%);
+    color: #856404;
+    padding: 8px 16px;
+    font-size: 11px;
+    line-height: 1.4;
+    border-bottom: 1px solid #f5c518;
+    flex-shrink: 0;
+    animation: messageSlideIn 0.3s ease-out;
+}
+
+/* ============================================
+   External Chat Mode — Combined Prompt + Paste Block
+   ============================================ */
+.aiChatMessage .messageBubble.externalMode {
+    max-width: 100%;
+    padding: 12px;
+    background: #f0f2f5;
+    border: 1px solid #d0d4db;
+    border-radius: 12px;
+    overflow: visible;
+}
+
+.externalCombinedBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ── Step container ── */
+.externalCombinedBlock .externalStep {
+    border: 1px solid #dce0e5;
+    border-radius: 8px;
+    background: white;
+    overflow: hidden;
+}
+
+.externalCombinedBlock .stepHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #444;
+    background: #e9ecef;
+    border-bottom: 1px solid #dce0e5;
+}
+
+.externalCombinedBlock .stepBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.externalCombinedBlock .stepBody {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Step 1: Prompt section ── */
+.externalCombinedBlock .promptContent {
+    max-height: 80px;
+    overflow-y: auto;
+    padding: 8px 12px;
+    margin: 0;
+    font-size: 10px;
+    line-height: 1.4;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    color: #555;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background: #fafbfc;
+}
+
+.externalCombinedBlock .promptContent::-webkit-scrollbar {
+    width: 4px;
+}
+
+.externalCombinedBlock .promptContent::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.externalCombinedBlock .btnCopyPrompt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 6px 12px;
+    border: none;
+    background: #667eea;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.externalCombinedBlock .btnCopyPrompt:hover {
+    background: #5a6fd6;
+}
+
+.externalCombinedBlock .btnCopyPrompt svg {
+    width: 11px;
+    height: 11px;
+}
+
+.externalCombinedBlock .externalFileWarning {
+    padding: 8px 12px;
+    font-size: 11px;
+    line-height: 1.45;
+    color: #856404;
+    background: #fef9e7;
+    border-top: 1px solid #f0e3a0;
+}
+
+/* ── Step 2: Paste section ── */
+.externalCombinedBlock .pasteTextarea {
+    width: 100%;
+    min-height: 80px;
+    max-height: 200px;
+    padding: 8px 12px;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    font-size: 12px;
+    line-height: 1.5;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    color: #333;
+    background: #fafbfc !important;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.externalCombinedBlock .pasteTextarea:focus {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.externalCombinedBlock .btnProcessResponse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 7px 14px;
+    border: none;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 0 0 7px 7px;
+}
+
+.externalCombinedBlock .btnProcessResponse:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.externalCombinedBlock .btnProcessResponse:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.externalCombinedBlock .btnProcessResponse svg {
+    width: 11px;
+    height: 11px;
+}
+
+/* ============================================
+   Field autocomplete dropdown + field pills
+   ============================================ */
+.aiChatInputArea .inputWrapper {
+    position: relative;
+}
+
+.aiFieldDropdown {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(100% + 6px);
+    margin: 0;
+    padding: 4px 0;
+    list-style: none;
+    max-height: 190px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+    z-index: 60;
+}
+
+.aiFieldDropdown li {
+    padding: 7px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.aiFieldDropdown li:hover,
+.aiFieldDropdown li.highlighted {
+    background: #eef1fe;
+}
+
+.aiFieldDropdown li .fieldMeta {
+    color: #9a9a9a;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.aiFieldPill {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 1px 8px;
+    margin: 0 2px;
+    font-size: 12px;
+    line-height: 18px;
+    white-space: nowrap;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+}
+
+/* contenteditable input (replaces the textarea, supports field chips) */
+.aiChatInputArea .aiChatEditable {
+    flex: 1;
+    min-height: 20px;
+    max-height: 100px;
+    overflow-y: auto;
+    outline: none;
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 4px 0;
+    word-break: break-word;
+}
+
+.aiChatInputArea .aiChatEditable:empty:before {
+    content: attr(data-placeholder);
+    color: #9a9a9a;
+    pointer-events: none;
+}
+
+.aiChatInputArea .aiChatEditable .aiFieldChip {
+    cursor: default;
+    user-select: none;
+}
+
+/* Formula code block inside an assistant message */
+.aiFormulaCode {
+    background: #1e1e2e;
+    color: #e6e6ef;
+    padding: 8px 10px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 12px;
+    margin-top: 8px;
+    overflow-x: auto;
+}
+
+/* ============================================
+   AI Side Panel - Slide-in Chat Side Panel
+   ============================================ */
+
+/* Side panel container */
+.aiSidePanel {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 2000000;
+    width: 420px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    background: #fafafa;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.18);
+    animation-duration: 0.3s;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-fill-mode: forwards;
+}
+
+/* Position variants */
+.aiSidePanel.right {
+    right: 0;
+    animation-name: aiSidePanelSlideInRight;
+    border-left: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.aiSidePanel.left {
+    left: 0;
+    animation-name: aiSidePanelSlideInLeft;
+    border-right: 1px solid rgba(102, 126, 234, 0.2);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.18);
+}
+
+/* Close button (inside header via headerRightSection) */
+.aiSidePanelClose {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+.aiSidePanelClose:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(1.1);
+}
+
+/* Override aiChatPanel sizing inside the side panel */
+.aiSidePanel .aiChatPanel {
+    width: 100%;
+    min-width: unset;
+    height: 100%;
+    border-right: none;
+    border-left: none;
+}
+
+/* ============================================
+   Slide-out animations (for removal)
+   ============================================ */
+.aiSidePanel.closing.right {
+    animation-name: aiSidePanelSlideOutRight;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in;
+}
+
+.aiSidePanel.closing.left {
+    animation-name: aiSidePanelSlideOutLeft;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in;
+}
+
+
+/* ============================================
+   Keyframes
+   ============================================ */
+@keyframes aiSidePanelSlideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes aiSidePanelSlideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes aiSidePanelSlideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes aiSidePanelSlideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes aiSidePanelFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes aiSidePanelFadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
 .rbt {
   outline: none;
 }

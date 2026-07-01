@@ -1,0 +1,80 @@
+## Formula Language Reference
+
+Formulas are written in a small custom expression language (NOT JavaScript). A
+formula is a list of sentences. Sentences are separated by whitespace or new
+lines. The value of the formula is the value of the LAST sentence that produced
+a value.
+
+### Referencing fields
+Refer to another field with the token [Field <id>], for example [Field 12].
+Using a field on its own yields its numeric price in a numeric formula, or its
+text in a text formula. Never invent field ids: only use the ids listed in the
+"Available Fields" section.
+
+### Values
+- Numbers: 1, 2.5, -3
+- Text: "between double quotes"
+- Booleans: true, false
+- Arrays: [1, 2, 3]  (index with array[0], the index must be a whole number)
+
+### Arithmetic operators
++  -  *  /
+- "+" adds numbers, but concatenates when either side is text: "Total: " + [Field 1]
+- Division by zero evaluates to 0.
+- There is NO exponent operator. Do not use "^".
+
+### Math functions and constants
+sin(x)  cos(x)  tan(x)  asin(x)  acos(x)  atan(x)  sqrt(x)  ln(x)
+pi   e
+Example: sqrt([Field 1]) + ln(2)
+
+### Rounding functions
+RNF_Round(value, decimals)   RNF_Ceil(value)   RNF_Floor(value)
+Example: RNF_Round([Field 1] * 0.15, 2)
+
+### Comparisons (used inside conditions)
+==  !=  >  >=  <  <=  contains  not contains
+- "contains" checks substring for text and membership/intersection for arrays.
+Example: [Field 1] contains "gold"
+
+### Logical operators
+and   or   not   ( )
+Example: if([Field 1] > 10 and [Field 2] == "yes") ...
+
+### Conditions
+Write a condition as:  if(<condition>) <result>
+There is NO "else" keyword. Two ways to express a default:
+
+1) Guarded cascade — cover every case with its own if. When several conditions
+   are true, the LAST matching if wins. When none match, the result is 0.
+       if([Field 1] <= 100) [Field 1]
+       if([Field 1] > 100) [Field 1] * 0.9
+
+2) if-block with return + a trailing default (recommended when you want a clear
+   fallback). "return" inside a matching if-block ends the whole formula:
+       if([Field 1] > 100){ return [Field 1] * 0.9 }
+       [Field 1]
+
+### Variables and blocks
+Assign with "=", no keyword: subtotal = [Field 1] + [Field 2]
+Reserved words that cannot be used as variable names: true, false, if, and, or,
+return.
+Group several sentences with { } and end early with "return <expr>":
+    base = [Field 1] + [Field 2]
+    if(base > 500){ return base * 0.9 }
+    base
+
+### Calling field methods
+Call a method on a field with a dot: [Field <id>].MethodName  or
+[Field <id>].MethodName(argument). Only use methods that are listed for that
+field's type in the "Available Fields" section. Examples:
+    [Field 3].GetColumnNumericalValue("Weight")
+    [Field 3].Contains("Large")
+
+### Worked examples
+- Sum of two fields:            [Field 1] + [Field 2]
+- 15% of a field:              [Field 1] * 0.15
+- 10% discount over 100:       if([Field 1] > 100){ return [Field 1] * 0.9 }  [Field 1]
+- Rounded average:             RNF_Round(([Field 1] + [Field 2]) / 2, 2)
+- Text label:                  "Selected: " + [Field 4].GetText
+- Column-based price:          [Field 3].GetColumnNumericalValue("Price") * [Field 5]

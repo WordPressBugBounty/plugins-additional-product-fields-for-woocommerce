@@ -7,6 +7,9 @@ namespace rednaowooextraproduct\core\Managers\FormManager\Fields;
 class FBTextualImageField extends FBFieldBase
 {
     public $optionsToReturn=null;
+    /**
+     * @formula Returns the list of currently selected text/image options. Each option exposes Id and Label.
+     */
     public function GetSelectedOptions(){
         if($this->optionsToReturn==null)
         {
@@ -40,6 +43,9 @@ class FBTextualImageField extends FBFieldBase
         )));
     }
 
+    /**
+     * @formula Returns the list of currently selected text/image options (same as GetSelectedOptions).
+     */
     public function GetValue(){
         return $this->GetSelectedOptions();
     }

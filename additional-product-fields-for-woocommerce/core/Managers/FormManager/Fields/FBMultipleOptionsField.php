@@ -12,6 +12,9 @@ use rednaowooextraproduct\Utilities\Sanitizer;
 class FBMultipleOptionsField extends FBFieldBase
 {
     public $optionsToReturn=null;
+    /**
+     * @formula Returns the list of currently selected options. Each option exposes Id, Label and RegularPrice.
+     */
     public function GetSelectedOptions(){
         $priceColumnsToUse=[];
         if($this->optionsToReturn==null)
@@ -84,10 +87,16 @@ class FBMultipleOptionsField extends FBFieldBase
         )));
     }
 
+    /**
+     * @formula Returns the list of currently selected options (same as GetSelectedOptions).
+     */
     public function GetValue(){
         return $this->GetSelectedOptions();
     }
 
+    /**
+     * @formula Returns a comma-separated string with the labels of all currently selected options.
+     */
     public function GetText()
     {
         $values=$this->GetValue();
@@ -95,6 +104,9 @@ class FBMultipleOptionsField extends FBFieldBase
         return \implode(', ',$labels);
     }
 
+    /**
+     * @formula Parameter: a label. Returns true if any currently selected option has that exact label.
+     */
     public function  Contains($value)
     {
         return ArrayUtils::Find( $this->GetSelectedOptions(),function ($item)use($value){
@@ -134,6 +146,9 @@ class FBMultipleOptionsField extends FBFieldBase
     }
 
 
+    /**
+     * @formula Parameter: an additional option column id or label. Returns the value(s) of that column for the selected option(s): a single value when one option is selected, an array when several are.
+     */
     public function GetColumnValue($columnNameOrId)
     {
         $selectedOptions=$this->GetSelectedOptions();
@@ -170,6 +185,9 @@ class FBMultipleOptionsField extends FBFieldBase
 
 
 
+    /**
+     * @formula Parameter: an additional option column id or label. Returns the numeric value(s) of that column for the selected option(s); use this instead of GetColumnValue when doing arithmetic. Returns a single number for one option, an array for several.
+     */
     public function GetColumnNumericalValue($columnNameOrId)
     {
         $selectedOptions=$this->GetSelectedOptions();

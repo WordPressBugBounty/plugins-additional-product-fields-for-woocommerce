@@ -97,6 +97,9 @@ abstract class FBFieldBase implements ComparisonSource
         return null;
     }
 
+    /**
+     * @formula Returns the price this field contributes to the total, as a number.
+     */
     public function GetPrice(){
         if(isset($this->Options->PriceType)&& $this->Options->PriceType=='none')
         {
@@ -141,6 +144,9 @@ abstract class FBFieldBase implements ComparisonSource
         return trim($this->Options->SalePrice);
     }
 
+    /**
+     * @formula Returns the submitted value of the field. Returns an empty value when nothing has been entered.
+     */
     public function GetValue(){
         return $this->GetEntryValue('Value');
     }
@@ -149,10 +155,16 @@ abstract class FBFieldBase implements ComparisonSource
         return array();
     }
 
+    /**
+     * @formula Returns true when the field has a non-empty value.
+     */
     public function IsUsed(){
         return $this->GetValue()!=null&&$this->GetValue()!='';
     }
 
+    /**
+     * @formula Returns the field value as display text. Returns an empty string when nothing has been entered.
+     */
     public function GetText()
     {
         return $this->GetEntryValue('Value');

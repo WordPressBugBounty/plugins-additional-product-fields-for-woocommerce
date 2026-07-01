@@ -8,6 +8,7 @@ use rednaowooextraproduct\core\Loader;
 use rednaowooextraproduct\Integration\PluginsIntegration\PluginIntegrationManager;
 use rednaowooextraproduct\Integration\Translations\TranslatorFactory;
 use rednaowooextraproduct\pr\Utilities\Activator;
+use rednaowooextraproduct\repository\AISettings;
 use rednaowooextraproduct\repository\ProductRepository;
 
 class ProductBuilderPanel
@@ -122,6 +123,7 @@ class ProductBuilderPanel
                 'Symbol'=>get_woocommerce_currency_symbol()
             ),
             "LicenseKey"=>$licenseKey,
+            'AISettings'=>AISettings::GetForClient($this->loader),
             "DefaultShowFinalAmount"=>apply_filters('woo-extra-product-default-show-final-amount','show'),
             "DefaultShowOptionsAmount"=>apply_filters('woo-extra-product-default-show-options-amount','show'),
             "DefaultFinalAmountLabel"=>__("Final Total","additional-product-fields-for-woocommerce"),
