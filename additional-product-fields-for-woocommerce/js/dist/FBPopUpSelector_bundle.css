@@ -101,7 +101,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-start;
     transition: border-color 200ms ease-in-out;
     cursor: pointer;
 }
@@ -134,4 +134,5 @@
 .popUpItem label{
     font-weight: bold;
     word-wrap: break-word;
+    flex-grow: 1;
 }

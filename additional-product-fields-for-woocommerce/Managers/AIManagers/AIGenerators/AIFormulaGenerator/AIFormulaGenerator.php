@@ -119,6 +119,12 @@ class AIFormulaGenerator extends AIGeneratorBase
      * [EXPLANATION]...[/EXPLANATION]) which is robust to quotes/parentheses in
      * the formula, and falls back to tolerant JSON for older prompts/models.
      *
+     * The marker blocks are read from the LAST delimiters (see
+     * ExtractMarkerBlock): in external-chat mode the pasted reply often carries
+     * the prompt too, whose instructions and examples use these same delimiters,
+     * so anchoring on the first match would leak the system prompt into the
+     * formula/explanation shown to the user.
+     *
      * @return object|null {formula, explanation}
      */
     private function ParseAIResponse($response)
@@ -127,11 +133,10 @@ class AIFormulaGenerator extends AIGeneratorBase
             return null;
 
         // Preferred: marker format.
-        if (preg_match('/\[FORMULA\](.*?)\[\/FORMULA\]/is', $response, $fm)) {
-            $formula = $this->CleanFormula($fm[1]);
-            $explanation = '';
-            if (preg_match('/\[EXPLANATION\](.*?)\[\/EXPLANATION\]/is', $response, $em))
-                $explanation = trim($em[1]);
+        $rawFormula = $this->ExtractMarkerBlock($response, 'FORMULA');
+        if ($rawFormula !== null) {
+            $formula = $this->CleanFormula($rawFormula);
+            $explanation = $this->SanitizeExplanation($this->ExtractMarkerBlock($response, 'EXPLANATION'));
             if ($formula !== '')
                 return (object)array('formula' => $formula, 'explanation' => $explanation);
         }

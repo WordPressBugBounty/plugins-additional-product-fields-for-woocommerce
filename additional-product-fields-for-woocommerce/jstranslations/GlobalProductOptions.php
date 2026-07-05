@@ -13,8 +13,8 @@
 "Greater or Equal Than"=>__("Greater or Equal Than","additional-product-fields-for-woocommerce"),
 "Less Than"=>__("Less Than","additional-product-fields-for-woocommerce"),
 "Less or Equal Than"=>__("Less or Equal Than","additional-product-fields-for-woocommerce"),
-"Is Checked"=>__("Is Checked","additional-product-fields-for-woocommerce"),
-"Is Not Checked"=>__("Is Not Checked","additional-product-fields-for-woocommerce"),
 "Contains"=>__("Contains","additional-product-fields-for-woocommerce"),
-"Not Contains"=>__("Not Contains","additional-product-fields-for-woocommerce")
+"Not Contains"=>__("Not Contains","additional-product-fields-for-woocommerce"),
+"Is Checked"=>__("Is Checked","additional-product-fields-for-woocommerce"),
+"Is Not Checked"=>__("Is Not Checked","additional-product-fields-for-woocommerce")
 );

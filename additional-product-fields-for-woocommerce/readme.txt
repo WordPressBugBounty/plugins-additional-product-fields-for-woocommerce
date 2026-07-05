@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=edsev
 Tags: woocommerce fields, woocommerce, extra product options, woocommerce form, woocommerce options
 Requires at least: 3.3
 Tested up to: 7.0.0
-Stable tag: 1.2.172
+Stable tag: 1.2.173
 License: GPLv3 or later
 Author URI: https://rednao.com/
 Plugin URI: https://rednao.com/
@@ -19,7 +19,7 @@ With extra product options builder for woocommerce you get more fields/features 
 
 = Features =
 
-https://www.youtube.com/watch?v=0Onykz2QK2A&t=1s
+https://www.youtube.com/watch?v=SrUfI5gH1Oo
 
 * **A bunch of fields at your disposal**
 	* **Text Box**: Add one line of text ([Demo](https://demos.rednao.com/productbuilder/product/text-box-demo/))

@@ -96,6 +96,15 @@
 .rnConditionGroup select{
     max-width: none;
 }
+
+/* El <input> interno de react-select es type=text, así que la regla global
+   .rednao input[type=text]{height:33.5px} lo estira. Lo reseteamos para que
+   el control respete el minHeight y quede a la altura de los <select> nativos. */
+.rnMultipleComparisonSelect input{
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+}
 .react-tooltip-lite{
     z-index: 100000 !important;
 }

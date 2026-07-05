@@ -5,6 +5,7 @@ namespace rednaowooextraproduct\ajax;
 
 
 use rednaowooextraproduct\Managers\AIManagers\AIException;
+use rednaowooextraproduct\Managers\AIManagers\AIGenerators\AIConditionGenerator\AIConditionGenerator;
 use rednaowooextraproduct\Managers\AIManagers\AIGenerators\AIFormulaGenerator\AIFormulaGenerator;
 use rednaowooextraproduct\Managers\AIManagers\APICaller\APICallerBase;
 use rednaowooextraproduct\repository\AISettings;
@@ -15,8 +16,8 @@ use rednaowooextraproduct\repository\AISettings;
  * works with no extra plumbing.
  *
  * The chat endpoints switch on messageType so the same configurable side panel
- * can later serve other prompt types (styles, conditions, ...). Today only
- * 'formula-generator' is wired.
+ * can serve several prompt types: 'formula-generator' (formula editor) and
+ * 'condition-generator' (conditions tab).
  */
 class AIAjax extends AjaxBase
 {
@@ -103,6 +104,23 @@ class AIAjax extends AjaxBase
         }
     }
 
+    /**
+     * Shared context for the condition generator. currentConditions arrives
+     * with the same JSON schema the AI replies with (built client side by
+     * AiConditionConverter).
+     */
+    private function GetConditionContext()
+    {
+        return array(
+            'fields' => $this->GetOptional('fields', array()),
+            'targetField' => $this->GetOptional('targetField', null),
+            'variations' => $this->GetOptional('variations', array()),
+            'isGlobalDesign' => $this->GetOptional('isGlobalDesign', false),
+            'allowProductInformation' => $this->GetOptional('allowProductInformation', false),
+            'currentConditions' => $this->GetOptional('currentConditions', null),
+        );
+    }
+
     public function GenerateFormula()
     {
         $this->VerifyBuilderNonce();
@@ -121,6 +139,11 @@ class AIAjax extends AjaxBase
                         $this->GetOptional('targetField', null),
                         $this->GetOptional('expectedReturnType', 'any')
                     );
+                    $this->SendSuccessMessage($result);
+                    break;
+                case 'condition-generator':
+                    $generator = new AIConditionGenerator($this->Loader);
+                    $result = $generator->Generate($message, $history, $this->GetConditionContext());
                     $this->SendSuccessMessage($result);
                     break;
                 default:
@@ -153,6 +176,11 @@ class AIAjax extends AjaxBase
                     );
                     $this->SendSuccessMessage($result);
                     break;
+                case 'condition-generator':
+                    $generator = new AIConditionGenerator($this->Loader);
+                    $result = $generator->BuildPromptOnly($message, $history, $this->GetConditionContext());
+                    $this->SendSuccessMessage($result);
+                    break;
                 default:
                     $this->SendErrorMessage(__('External chat is not available for this request.', 'additional-product-fields-for-woocommerce'));
             }
@@ -175,6 +203,11 @@ class AIAjax extends AjaxBase
             switch ($messageType) {
                 case 'formula-generator':
                     $generator = new AIFormulaGenerator($this->Loader);
+                    $result = $generator->ProcessExternalResponse($responseJson, $message, $history);
+                    $this->SendSuccessMessage($result);
+                    break;
+                case 'condition-generator':
+                    $generator = new AIConditionGenerator($this->Loader);
                     $result = $generator->ProcessExternalResponse($responseJson, $message, $history);
                     $this->SendSuccessMessage($result);
                     break;
