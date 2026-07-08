@@ -25,14 +25,17 @@ below; only use the ids, option ids and variation names listed here.
 ### Form fields
 Use: {"target": "field", "fieldId": "<id>", "comparison": "<comparison>", "value": <value>}
 A field can NOT be compared against itself: the target field is not listed.
+In the request, a token like [Field 3] refers to field id 3, and [Field 3 Option 12]
+refers to option id 12 of field id 3 (use those exact ids).
 {{fieldList}}
 {{variations}}{{productInformation}}
 
+{{targetConditions}}
 ## Current conditions of the target field
 Your reply must contain the COMPLETE new state of the conditions: everything you
-return replaces ALL the current show/hide and validation conditions. Keep the
-current conditions unchanged in your reply unless the user asks to change or
-remove them.
+return replaces ALL the current show/hide, validation and field specific
+conditions. Keep the current conditions unchanged in your reply unless the user
+asks to change or remove them (to remove one, leave it out of your reply).
 {{currentConditions}}
 
 ## Output Format
@@ -73,6 +76,10 @@ and strings, no comments, no trailing commas).
   "Valid" when the field is only valid while the condition is met.
 - "errorMessage": the message shown to the shopper; write it in the same
   language the user used in the request.
+- "fieldConditions": include this top level array ONLY when the section
+  "## Target field specific conditions" above lists supported kinds AND the
+  request involves them; otherwise omit it. Each entry uses the exact "kind" and
+  payload shown in that section, plus a "groups" list in the same line format.
 
 ## Rules
 1. Only use field ids, option ids and variation names that appear above.

@@ -118,6 +118,7 @@ class AIAjax extends AjaxBase
             'isGlobalDesign' => $this->GetOptional('isGlobalDesign', false),
             'allowProductInformation' => $this->GetOptional('allowProductInformation', false),
             'currentConditions' => $this->GetOptional('currentConditions', null),
+            'targetConditionsPrompt' => $this->GetOptional('targetConditionsPrompt', ''),
         );
     }
 

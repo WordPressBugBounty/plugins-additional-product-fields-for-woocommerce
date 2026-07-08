@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=edsev
 Tags: woocommerce fields, woocommerce, extra product options, woocommerce form, woocommerce options
 Requires at least: 3.3
 Tested up to: 7.0.0
-Stable tag: 1.2.173
+Stable tag: 1.2.174
 License: GPLv3 or later
 Author URI: https://rednao.com/
 Plugin URI: https://rednao.com/
@@ -69,7 +69,21 @@ https://www.youtube.com/watch?v=SrUfI5gH1Oo
 	* **[Global Product Options](https://productbuilder.rednao.com/knowledge-base/global-product-options/)**: Add options to all the products that match a condition defined by you
 * **Custom Validations**: Create your own validations ([Demo](https://demos.rednao.com/productbuilder/product/custom-validation/))
 
-== Latest Tutorials ==
+== Tutorials ==
+
+== Getting Started ==
+
+* Learn how to add options to your products *
+
+https://www.youtube.com/watch?v=u3ndoMWvNzQ&t=42s
+
+
+== Using conditions ==
+
+* Learn how to dynamically show fields, add custom validations, change prices and more *
+
+https://www.youtube.com/watch?v=m3yBkfwN-Sg
+
 = Creating multi-price options =
 [Link](https://productbuilder.rednao.com/knowledge-base/creating-multi-price-options/)
 Learn how to create fields with dynamic prices

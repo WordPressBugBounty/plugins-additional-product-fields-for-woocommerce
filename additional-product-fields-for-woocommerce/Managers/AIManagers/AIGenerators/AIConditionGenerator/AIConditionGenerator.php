@@ -85,6 +85,7 @@ class AIConditionGenerator extends AIGeneratorBase
         $prompt = str_replace('{{fieldList}}', $this->BuildFieldListText(), $prompt);
         $prompt = str_replace('{{variations}}', $this->BuildVariationsText(), $prompt);
         $prompt = str_replace('{{productInformation}}', $this->BuildProductInformationText(), $prompt);
+        $prompt = str_replace('{{targetConditions}}', $this->BuildTargetConditionsText(), $prompt);
         $prompt = str_replace('{{currentConditions}}', $this->BuildCurrentConditionsText(), $prompt);
 
         $conversationHistory = $this->BuildConversationHistory();
@@ -178,7 +179,7 @@ class AIConditionGenerator extends AIGeneratorBase
 
     private function LooksLikeConditions($data)
     {
-        return is_object($data) && (property_exists($data, 'showHide') || property_exists($data, 'validations'));
+        return is_object($data) && (property_exists($data, 'showHide') || property_exists($data, 'validations') || property_exists($data, 'fieldConditions'));
     }
 
     private function BuildTargetFieldText()
@@ -274,6 +275,18 @@ class AIConditionGenerator extends AIGeneratorBase
         }
 
         return $text;
+    }
+
+    /**
+     * Field specific conditions the target field can receive (disable options,
+     * max/min items, ...). The text is built client side by each condition's AI
+     * family descriptor and sent verbatim, so the backend never has to know the
+     * catalog: adding a condition needs no change here. Empty when the field
+     * supports none.
+     */
+    private function BuildTargetConditionsText()
+    {
+        return $this->GetContext('targetConditionsPrompt', '');
     }
 
     private function BuildProductInformationText()

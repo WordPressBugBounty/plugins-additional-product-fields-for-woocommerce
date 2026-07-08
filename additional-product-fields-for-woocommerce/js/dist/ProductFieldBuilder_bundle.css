@@ -53,6 +53,26 @@
   border-bottom: 1px solid #e9ecef;
   border-top: 1px solid #e9ecef; }
 
+.IconSelectorItem{
+    border:1px solid #dfdfdf;
+    cursor: pointer;
+    transition: border-color ease-in-out 200ms;
+}
+
+.IconSelectorItem:hover,.IconSelectorItem.rnselected{
+    border-color:red;
+}
+.TagIcon{
+    transition: 200ms ease-in-out color;
+    color:#777;
+}
+
+.TagIcon:hover{
+    color:red;
+}
+.react-tooltip-lite{
+    z-index: 100000 !important;
+}
 .rednao .rnTabItem {
   user-select: none;
   cursor: pointer;
@@ -85,26 +105,6 @@
 .rednao .rnTabs ul {
   border-bottom: 1px solid #dfdfdf; }
 
-.IconSelectorItem{
-    border:1px solid #dfdfdf;
-    cursor: pointer;
-    transition: border-color ease-in-out 200ms;
-}
-
-.IconSelectorItem:hover,.IconSelectorItem.rnselected{
-    border-color:red;
-}
-.TagIcon{
-    transition: 200ms ease-in-out color;
-    color:#777;
-}
-
-.TagIcon:hover{
-    color:red;
-}
-.react-tooltip-lite{
-    z-index: 100000 !important;
-}
 .tagIcon{
 	color:rgb(223, 223, 223);
 	cursor: pointer;
@@ -1016,6 +1016,36 @@
     color: #9a9a9a;
     font-size: 11px;
     white-space: nowrap;
+}
+
+/* Option sub-rows shown under a multiple-option field. */
+.aiFieldDropdown li.aiOptionRow {
+    padding-left: 26px;
+    font-size: 12px;
+}
+
+.aiFieldDropdown li.aiOptionRow .aiOptionLabel {
+    color: #444;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Non-selectable field header (e.g. the target field: only its options can be tagged). */
+.aiFieldDropdown li.aiFieldGroupLabel {
+    cursor: default;
+    opacity: 0.65;
+    font-weight: 600;
+}
+
+.aiFieldDropdown li.aiFieldGroupLabel:hover {
+    background: transparent;
+}
+
+/* Option chip in the input: a lighter variant of the field chip. */
+.aiChatInputArea .aiChatEditable .aiOptionChip,
+.aiFieldPill.aiOptionPill {
+    background: linear-gradient(135deg, #7f8ff4 0%, #9a6ec2 100%);
 }
 
 .aiFieldPill {

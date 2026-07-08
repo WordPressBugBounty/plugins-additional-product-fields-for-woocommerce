@@ -20,7 +20,6 @@
 "Global Options"=>__("Global Options","additional-product-fields-for-woocommerce"),
 "Name is mandatory"=>__("Name is mandatory","additional-product-fields-for-woocommerce"),
 "Global options saved"=>__("Global options saved","additional-product-fields-for-woocommerce"),
-"Required"=>__("Required","additional-product-fields-for-woocommerce"),
 "Please confirm"=>__("Please confirm","additional-product-fields-for-woocommerce"),
 "Create Condition"=>__("Create Condition","additional-product-fields-for-woocommerce"),
 "or"=>__("or","additional-product-fields-for-woocommerce"),

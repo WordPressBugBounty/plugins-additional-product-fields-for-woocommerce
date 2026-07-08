@@ -915,6 +915,36 @@ li.CodeMirror-hint-active{
     white-space: nowrap;
 }
 
+/* Option sub-rows shown under a multiple-option field. */
+.aiFieldDropdown li.aiOptionRow {
+    padding-left: 26px;
+    font-size: 12px;
+}
+
+.aiFieldDropdown li.aiOptionRow .aiOptionLabel {
+    color: #444;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Non-selectable field header (e.g. the target field: only its options can be tagged). */
+.aiFieldDropdown li.aiFieldGroupLabel {
+    cursor: default;
+    opacity: 0.65;
+    font-weight: 600;
+}
+
+.aiFieldDropdown li.aiFieldGroupLabel:hover {
+    background: transparent;
+}
+
+/* Option chip in the input: a lighter variant of the field chip. */
+.aiChatInputArea .aiChatEditable .aiOptionChip,
+.aiFieldPill.aiOptionPill {
+    background: linear-gradient(135deg, #7f8ff4 0%, #9a6ec2 100%);
+}
+
 .aiFieldPill {
     display: inline-block;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
