@@ -9,6 +9,7 @@ namespace rednaowooextraproduct\core;
 use rednaowooextraproduct\core\Managers\CartFormatManager\ButtonSelectionFormatter;
 use rednaowooextraproduct\core\Managers\CartFormatManager\GoogleMapsAddressFormatter;
 use rednaowooextraproduct\core\Managers\CartFormatManager\TextualImageFormatter;
+use rednaowooextraproduct\core\Managers\FileManager\FileAccessManager;
 use rednaowooextraproduct\Utilities\Sanitizer;
 
 class FreeCartItemPrinter
@@ -132,10 +133,10 @@ class FreeCartItemPrinter
         if($includeLabel)
             $html.="<label style='font-weight: bold;display:block;'>" . esc_html($value->Label) . ":</label>";
 
-        $url=admin_url( 'admin-ajax.php').'?action='.$this->Loader->Prefix.'_getpublicfileupload&path='.\basename($value->Path).'&name='.'signature';
-
-        if(isset($value->Value)&&$value->Value!='p')
-            $url.='&temp=true';
+        $url=(new FileAccessManager($this->Loader))->GetDownloadURL(
+            $value->Path,
+            'signature'
+        );
         $html.="<div style='display: inline-block;'>
                             <img style='width:120px;height:120px;' src='" .esc_attr__($url)."'/>    
                         </div>

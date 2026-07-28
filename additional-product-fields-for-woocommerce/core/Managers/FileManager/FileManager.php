@@ -125,9 +125,8 @@ class FileManager
         $ext=pathinfo($value["name"], PATHINFO_EXTENSION);
         $originalFileName=$value['name'];
 
-        $fileName=uniqid("",true).".".pathinfo($value["name"], PATHINFO_EXTENSION);
+        $fileName=$this->CreateRandomStorageName(pathinfo($value["name"], PATHINFO_EXTENSION));
         $fileName=wp_unique_filename($tempDir,$fileName);
-        $id=md5(uniqid($fileName,true));
 
         if(@move_uploaded_file( $value['tmp_name'], $tempDir.$fileName )===false)
         {
@@ -145,7 +144,7 @@ class FileManager
         if(\strpos($Path,$this->GetTempFolderRootPath()) !==0)
             return;
 
-        $fileName=uniqid("",true).'.'.pathinfo($Path, PATHINFO_EXTENSION);;
+        $fileName=$this->CreateRandomStorageName(pathinfo($Path, PATHINFO_EXTENSION));
         $fileName=wp_unique_filename($folder,$fileName);
 
         if(@copy( $Path, $folder.$fileName )===false)
@@ -161,7 +160,7 @@ class FileManager
     {
 
         $tempDir=$this->GetTempFolderRootPath();
-        $fileName=uniqid("",true).'.png';
+        $fileName=$this->CreateRandomStorageName('png');
         $fileName=wp_unique_filename($tempDir,$fileName);
 
 
@@ -170,6 +169,28 @@ class FileManager
         $save_signature = file_put_contents( $tempDir.$fileName, $data );
 
         return $tempDir.$fileName;
+    }
+
+    /**
+     * Generate a cryptographically unpredictable physical filename.
+     *
+     * @param string $extension
+     * @return string
+     */
+    private function CreateRandomStorageName($extension)
+    {
+        try
+        {
+            $name = bin2hex(random_bytes(32));
+        }
+        catch (\Exception $exception)
+        {
+            // WordPress provides a CSPRNG-backed fallback on supported installs.
+            $name = strtolower(wp_generate_password(64, false, false));
+        }
+
+        $extension = sanitize_key(strval($extension));
+        return $extension === '' ? $name : $name . '.' . $extension;
     }
 
 }

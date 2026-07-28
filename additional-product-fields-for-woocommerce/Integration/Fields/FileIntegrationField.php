@@ -3,6 +3,8 @@
 
 namespace rednaowooextraproduct\Integration\Fields;
 
+use rednaowooextraproduct\core\Managers\FileManager\FileAccessManager;
+
 
 class FileIntegrationField extends IntegrationFieldBase
 {
@@ -36,9 +38,11 @@ class FileIntegrationField extends IntegrationFieldBase
     public function ToText()
     {
         $urls=[];
+        $loader=apply_filters('woo_extra_products_get_loader',null);
+        $fileAccessManager=new FileAccessManager($loader);
         foreach($this->Paths as $currentPath)
         {
-            $urls[]=admin_url( 'admin-ajax.php').'?action=rednaowooextraproduct_getpublicfileupload&path='.\esc_html($currentPath).'&name='.\basename($currentPath);
+            $urls[]=$fileAccessManager->GetDownloadURL($currentPath,basename($currentPath));
 
         }
 
@@ -48,14 +52,17 @@ class FileIntegrationField extends IntegrationFieldBase
     public function ToHTML()
     {
         $text='<div>';
+        $loader=apply_filters('woo_extra_products_get_loader',null);
+        $fileAccessManager=new FileAccessManager($loader);
         foreach($this->Paths as $currentPath)
         {
+            $url=$fileAccessManager->GetDownloadURL($currentPath,basename($currentPath));
             if(substr_compare($currentPath, '.png', -strlen('.png')) === 0||substr_compare($currentPath, '.jpeg', -strlen('.jpeg')) === 0||
                 substr_compare($currentPath, '.jpg', -strlen('.jpg')) === 0)
-                $text.='<img style="width:'.$this->Width.';height:'.$this->Height.'" src="'.\esc_attr__(admin_url( 'admin-ajax.php').'?action=rednaowooextraproduct_getpublicfileupload&path='.$currentPath.'&name='.\basename($currentPath)).'"/>';
+                $text.='<img style="width:'.esc_attr($this->Width).';height:'.esc_attr($this->Height).'" src="'.esc_attr($url).'"/>';
 
             else
-                $text.='<a href="'.\esc_attr__(admin_url( 'admin-ajax.php').'?action=rednaowooextraproduct_getpublicfileupload&path='.\esc_attr__($currentPath).'&name='.\basename($currentPath)).'">'.\esc_html(\esc_attr__(admin_url( 'admin-ajax.php').'?action=rednaowooextraproduct_getpublicfileupload&path='.\esc_html($currentPath).'&name='.\basename($currentPath))).'</a>';
+                $text.='<a href="'.esc_attr($url).'">'.esc_html($url).'</a>';
         }
         $text.='</div>';
 

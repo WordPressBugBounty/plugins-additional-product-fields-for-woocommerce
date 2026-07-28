@@ -2885,6 +2885,31 @@ rn-text-editor .ProseMirror-menubar-wrapper
 .woocommerce_options_panel .rednaoFieldContainer label{
     width: auto;
 }
+
+.rnHistoryButtons{
+    display: inline-flex;
+    margin-left: 15px;
+    gap: 10px;
+}
+
+.rnHistoryButton{
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #2271b1;
+    cursor: pointer;
+    font: inherit;
+}
+
+.rnHistoryButton:hover:not(:disabled){
+    color: #135e96;
+}
+
+.rnHistoryButton:disabled{
+    color: #a7aaad;
+    cursor: default;
+}
+
 .ImageSelectorRemove{
     transition: 200ms ease-in-out color;
     cursor: pointer;

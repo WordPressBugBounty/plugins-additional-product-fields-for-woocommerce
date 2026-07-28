@@ -5,6 +5,7 @@ namespace rednaowooextraproduct\core\Managers\FormManager\Fields;
 
 
 use rednaowooextraproduct\core\Managers\FileManager\FileManager;
+use rednaowooextraproduct\core\Managers\FileManager\FileAccessManager;
 use rednaowooextraproduct\core\Managers\SlateGenerator\Core\HtmlTagWrapper;
 
 
@@ -69,10 +70,12 @@ class FBSignature extends FBFieldBase
         $container=new HtmlTagWrapper($document,$document->createElement('img'));
         $path=$this->GetEntryValue('Path','');
 
-        $prefix=$this->Loader->Prefix;
-        $url=admin_url( 'admin-ajax.php').'?action='.$prefix.'_getpublicfileupload&path='.\basename($path).'&name='.'signature';
+        $url=(new FileAccessManager($this->Loader))->GetDownloadURL(
+            $path,
+            'signature'
+        );
 
-        $container->SetAttribute('src',$path);
+        $container->SetAttribute('src',$url);
         return $container;
     }
 

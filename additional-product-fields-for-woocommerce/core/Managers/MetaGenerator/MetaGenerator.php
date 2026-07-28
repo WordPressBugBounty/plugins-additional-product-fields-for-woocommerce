@@ -2,7 +2,7 @@
 
 namespace rednaowooextraproduct\core\Managers\MetaGenerator;
 
-use rednaowooextraproduct\core\Managers\FileManager\FileManager;
+use rednaowooextraproduct\core\Managers\FileManager\FileAccessManager;
 use rednaowooextraproduct\Utilities\Sanitizer;
 
 class MetaGenerator
@@ -120,16 +120,13 @@ class MetaGenerator
                     if ($files == null || !is_array($files))
                         break;
                     $value = [];
+                    $fileAccessManager = new FileAccessManager($this->Loader);
                     foreach ($files as $valueRow)
                     {
-                        $fileManager = new FileManager($this->Loader);
-                        $additionalParams = '';
-                        if (strpos($valueRow->Path, $fileManager->GetTempFolderRootPath()) === 0)
-                        {
-                            $additionalParams = '&temp=true';
-
-                        }
-                        $value[] = admin_url('admin-ajax.php') . '?action=' . $this->Loader->Prefix . '_getpublicfileupload&path=' . basename($valueRow->Path) . '&name=' . $valueRow->Name.$additionalParams;
+                        $value[] = $fileAccessManager->GetDownloadURL(
+                            $valueRow->Path,
+                            $valueRow->Name
+                        );
                     }
 
                     if(count($value)==1)
@@ -155,7 +152,10 @@ class MetaGenerator
                     break;
                 case 'signature':
 
-                    $value=admin_url( 'admin-ajax.php').'?action='.$this->Loader->Prefix.'_getpublicfileupload&path='.\basename($fieldEntry->Path).'&name='.'signature';
+                    $value=(new FileAccessManager($this->Loader))->GetDownloadURL(
+                        $fieldEntry->Path,
+                        'signature'
+                    );
                     break;
 
             }
