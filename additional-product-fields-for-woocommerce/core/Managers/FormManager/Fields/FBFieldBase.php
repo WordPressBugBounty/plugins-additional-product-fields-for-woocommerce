@@ -15,6 +15,7 @@ use rednaowooextraproduct\core\Managers\FormManager\Calculator\NoneCalculator;
 use rednaowooextraproduct\core\Managers\FormManager\FBColumn;
 use rednaowooextraproduct\core\Managers\SlateGenerator\Core\HtmlTagWrapper;
 use rednaowooextraproduct\pr\Managers\FormManager\Calculator\FormulaCalculator;
+use rednaowooextraproduct\Utilities\Sanitizer;
 use undefined\DTO\FBFieldBaseOptions;
 
 abstract class FBFieldBase implements ComparisonSource
@@ -168,6 +169,14 @@ abstract class FBFieldBase implements ComparisonSource
     public function GetText()
     {
         return $this->GetEntryValue('Value');
+    }
+
+    /**
+     * @formula Returns the submitted field value converted to a number.
+     */
+    public function ToNumber()
+    {
+        return Sanitizer::SanitizeNumber($this->GetText());
     }
 
 

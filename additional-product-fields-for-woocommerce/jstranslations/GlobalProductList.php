@@ -16,5 +16,6 @@
 "Option disabled successfully"=>__("Option disabled successfully","additional-product-fields-for-woocommerce"),
 "Enabling"=>__("Enabling","additional-product-fields-for-woocommerce"),
 "Option enabled successfully"=>__("Option enabled successfully","additional-product-fields-for-woocommerce"),
+"Please confirm"=>__("Please confirm","additional-product-fields-for-woocommerce"),
 "Please select an action first"=>__("Please select an action first","additional-product-fields-for-woocommerce")
 );
