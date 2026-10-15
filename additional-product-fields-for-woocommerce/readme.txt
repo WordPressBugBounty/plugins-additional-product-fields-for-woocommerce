@@ -3,8 +3,8 @@ Contributors: EDGARROJAS
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=edseventeen%40gmail.com
 Tags: woocommerce fields, woocommerce, extra product options, woocommerce form, woocommerce options
 Requires at least: 3.3
-Tested up to: 7.0.3
-Stable tag: 1.2.178
+Tested up to: 7.1.3
+Stable tag: 1.2.179
 License: GPLv3 or later
 Author URI: https://rednao.com/
 Plugin URI: https://rednao.com/

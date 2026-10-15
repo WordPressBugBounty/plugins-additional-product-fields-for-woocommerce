@@ -5,7 +5,7 @@
  * Description: Create extra options to each of your products
  * Author: RedNao
  * Author URI: http://rednao.com
- * Version: 1.2.178
+ * Version: 1.2.179
  * Text Domain: additional-product-fields-for-woocommerce
  * Domain Path: /languages/
  * Network: true
